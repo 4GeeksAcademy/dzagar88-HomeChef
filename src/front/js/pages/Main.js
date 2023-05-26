@@ -1,19 +1,21 @@
-import React, {useEffect} from "react";
-import { useNavigate } from "react-router-dom";
+import * as React from "react";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 export const Main = () => {
-	let navigate = useNavigate()
-    // useEffect(() => {
-    //     // check if there is token, then show nav bar we want; if not, then show log in page
-    //     if (sessionStorage.getItem("token") == null){
-    //         navigate("/login")
-    //     }
-    // }, []);
-
     return (
         <div className="container">
-            <h1>Hello</h1>
+            <ToggleButtonGroup
+                color="primary"
+                value={alignment}
+                exclusive
+                onChange={handleChange}
+                aria-label="Platform"
+            >
+                <ToggleButton value="web">Web</ToggleButton>
+                <ToggleButton value="android">Android</ToggleButton>
+            </ToggleButtonGroup>
         </div>
-	
-	);
+
+    );
 };

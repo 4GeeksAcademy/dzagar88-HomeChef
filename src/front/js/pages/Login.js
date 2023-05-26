@@ -8,12 +8,18 @@ export default function Login() {
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
 
-  // useEffect(() => {
-  //   // check if there is token, then show nav bar we want; if not, then show log in page
-  //   if (localStorage.getItem("token")) {
-  //     navigate("/main");
-  //   }
-  // }, [localStorage.getItem("token")]);
+  useEffect(() => {
+    // check if there is token, then show nav bar we want; if not, then show log in page
+    if (localStorage.getItem("token")) {
+      actions.setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (store.token) {
+      navigate("/main")
+    }
+  }, [store.token])
 
   const handleSubmit = () => {
     actions.login(username, password);

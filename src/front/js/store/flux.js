@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-
+			token: undefined
 		},
 		actions: {
 			login: (username, password) => {
@@ -14,9 +14,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(token => {
 						localStorage.setItem('token', token)
+						setStore({
+							token: token
+						})
 						console.log(token)
 					})
 					.catch(error => console.log(error))
+			},
+			setToken(token) {
+				setStore({
+					token: token
+				})
 			}
 		}
 	};
