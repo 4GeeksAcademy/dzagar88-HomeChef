@@ -5,6 +5,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
 
+from flask_jwt_extended import  jwt_required, create_access_token
+
+
 
 api = Blueprint('api', __name__)
 
@@ -31,6 +34,6 @@ def handle_login():
     if user is None or not user.check_password(password):
         raise APIException("Invalid username or password", 401)
 
-    # Authentication successful, return user information or token
-    return jsonify(user.to_dict()), 200
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token), 200
 
