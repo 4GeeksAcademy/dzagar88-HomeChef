@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Context } from '../store/appContext';
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
+	const { store, actions } = useContext(Context)
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-
-		try {
-			const response = await fetch(process.env.BACKEND_URL + '/api/login', {
-				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ username, password })
-			});
-
-			if (!response.ok) {
-				throw new Error('Invalid username or password');
-			}
-
-			const token = await response.json();
-			sessionStorage.setItem('token', token);
-			navigate('/main');
-		} catch (error) {
-			console.error(error);
+	useEffect(() => {
+		// check if there is token, then show nav bar we want; if not, then show log in page
+		if (sessionStorage.getItem("token")) {
+			navigate("/main")
 		}
-	};
+	}, [sessionStorage.getItem("token")]);
+
+	const handleSubmit = () => {
+		actions.login(username, password)
+	}
 
 	return (
 		<form className="text-center m-5" onSubmit={handleSubmit}>
