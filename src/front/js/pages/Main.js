@@ -3,6 +3,12 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 export const Main = () => {
+    const [alignment, setAlignment] = React.useState('web');
+
+    const handleChange = (event, newAlignment) => {
+        setAlignment(newAlignment);
+    };
+
     return (
         <div className="container">
             <ToggleButtonGroup
@@ -11,9 +17,10 @@ export const Main = () => {
                 exclusive
                 onChange={handleChange}
                 aria-label="Platform"
+                className="Toggle"
             >
-                <ToggleButton value="web">Web</ToggleButton>
-                <ToggleButton value="android">Android</ToggleButton>
+                <ToggleButton value="diner">Diner</ToggleButton>
+                <ToggleButton value="chef">Chef</ToggleButton>
             </ToggleButtonGroup>
         </div>
 
