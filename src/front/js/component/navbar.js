@@ -4,6 +4,25 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
+	const handleLogout = async () => {
+		try {
+			const response = await fetch('/api/logout', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			if (response.ok) {
+				localStorage.removeItem('token');
+				window.location.href = '/login';
+			} else {
+				console.error('Logout request failed');
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	if (store.token) {
 		return (
 			<nav className="navbar navbar-dark bg-dark">
@@ -15,9 +34,7 @@ export const Navbar = () => {
 						<Link to="">
 							<button className="btn btn-primary">{"Profile"}</button>
 						</Link>
-						<Link to="">
-							<button className="btn btn-primary mx-2">{"Log out"}</button>
-						</Link>
+						<button className="btn btn-primary" onClick={handleLogout}>Logout</button>
 					</div>
 				</div>
 			</nav>
