@@ -17,7 +17,7 @@ export default function Login() {
 
   useEffect(() => {
     if (store.token) {
-      navigate("/main")
+      navigate("/")
     }
   }, [store.token])
 

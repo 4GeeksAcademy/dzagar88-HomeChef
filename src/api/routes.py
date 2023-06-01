@@ -7,8 +7,6 @@ from api.utils import generate_sitemap, APIException
 
 from flask_jwt_extended import  jwt_required, create_access_token
 
-
-
 api = Blueprint('api', __name__)
 
 
@@ -36,4 +34,3 @@ def handle_login():
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token), 200
-
