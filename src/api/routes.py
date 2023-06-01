@@ -9,7 +9,6 @@ from flask_jwt_extended import  jwt_required, create_access_token
 
 api = Blueprint('api', __name__)
 
-
 @api.route("/signup", methods=["POST"])
 def create_user():
     body = request.json

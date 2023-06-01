@@ -1,26 +1,18 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	const handleLogout = async () => {
-		try {
-			const response = await fetch('/api/logout', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			if (response.ok) {
-				localStorage.removeItem('token');
-				window.location.href = '/login';
-			} else {
-				console.error('Logout request failed');
-			}
-		} catch (error) {
-			console.error(error);
-		}
+
+	const navigate = useNavigate();
+
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+	const logout = () => {
+		localStorage.removeItem('token');
+		setIsLoggedIn(false);
+		navigate("/");
 	};
 
 	if (store.token) {
@@ -34,7 +26,9 @@ export const Navbar = () => {
 						<Link to="">
 							<button className="btn btn-primary">{"Profile"}</button>
 						</Link>
-						<button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+						<form onSubmit={logout}>
+							<button className="btn btn-primary">Logout</button>
+						</form>
 					</div>
 				</div>
 			</nav>
