@@ -41,8 +41,8 @@ export const Home = () => {
 				>
 					<ToggleButton value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
 					<ToggleButton value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
-					{toggleButton()}
 				</ToggleButtonGroup>
+				{toggleButton()}
 			</div>
 		);
 	} else {
