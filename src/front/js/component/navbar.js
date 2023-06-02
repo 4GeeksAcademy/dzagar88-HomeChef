@@ -17,7 +17,7 @@ export const Navbar = () => {
 
 	if (store.token) {
 		return (
-			<nav className="navbar navbar-dark bg-dark">
+			<nav className="navbar navbar-dark brown-bg">
 				<div className="container">
 					<Link to="/home">
 						<span className="navbar-brand mb-0 h1 title-font">HomeChef</span>
@@ -35,7 +35,7 @@ export const Navbar = () => {
 		);
 	} else {
 		return (
-			<nav className="navbar navbar-light bg-secondary">
+			<nav className="navbar navbar-light brown-bg">
 				<div className="container">
 					<Link to="/home">
 						<span className="navbar-brand mb-0 h1 title-font white-title">HomeChef</span>
