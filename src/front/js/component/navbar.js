@@ -19,12 +19,12 @@ export const Navbar = () => {
 		return (
 			<nav className="navbar navbar-dark bg-dark">
 				<div className="container">
-					<Link to="/">
-						<span className="navbar-brand mb-0 h1">HomeChef</span>
+					<Link to="/home">
+						<span className="navbar-brand mb-0 h1 title-font">HomeChef</span>
 					</Link>
-					<div className="ml-auto">
+					<div className="ml-auto d-flex justify-content-center">
 						<Link to="">
-							<button className="btn btn-primary">{"Profile"}</button>
+							<button className="btn btn-primary mx-2">{"Profile"}</button>
 						</Link>
 						<form onSubmit={logout}>
 							<button className="btn btn-primary">Logout</button>
@@ -35,10 +35,10 @@ export const Navbar = () => {
 		);
 	} else {
 		return (
-			<nav className="navbar navbar-light bg-light">
+			<nav className="navbar navbar-light bg-secondary">
 				<div className="container">
-					<Link to="/">
-						<span className="navbar-brand mb-0 h1">HomeChef</span>
+					<Link to="/home">
+						<span className="navbar-brand mb-0 h1 title-font white-title">HomeChef</span>
 					</Link>
 					<div className="ml-auto">
 						<Link to="/signup">

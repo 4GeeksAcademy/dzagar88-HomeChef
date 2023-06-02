@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useLoadScript, GoogleMap, Marker, Circle } from "@react-google-maps/api";
+import homechefBG from "../../img/homechefBG.jpg"
 
 const libraries = ["places"];
 
@@ -9,17 +10,23 @@ export const Diner = () => {
         libraries,
     });
 
-    const [searchZip, setSearchZip] = useState("");
+    const [searchAddress, setSearchAddress] = useState({
+        street: "",
+        city: "",
+        state: ""
+    });
     const [center, setCenter] = useState({ lat: 30.6697, lng: -81.4626 });
 
     const handleSearch = () => {
+        const address = `${searchAddress.street}, ${searchAddress.city}, ${searchAddress.state}`;
         const geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ address: searchZip }, (results, status) => {
+        geocoder.geocode({ address: address }, (results, status) => {
             if (status === "OK" && results.length > 0) {
                 const location = results[0].geometry.location;
                 setCenter({ lat: location.lat(), lng: location.lng() });
             } else {
                 console.log("Geocode was not successful for the following reason: " + status);
+                alert("Geocode was not successful for the following reason: " + status);
             }
         });
     };
@@ -28,17 +35,35 @@ export const Diner = () => {
     if (!isLoaded) return <div>Loading...</div>;
 
     return (
-        <div className="container">
-            <div>
-                <h1>Diner</h1>
-                <p>Here you can search for a local "Chef"...</p>
+        <div className="container d-flex lower-font">
+            <div><br></br>
+                <h1 className="bg-light d-flex justify-content-center me-2 title-font">Diner</h1>
+                <p className="bg-light d-flex justify-content-center me-2">Here you can search for a local "Chef"...</p>
                 <input
+                    className="me-1 mb-1"
                     type="text"
-                    value={searchZip}
-                    onChange={(e) => setSearchZip(e.target.value)}
-                    placeholder="Enter ZIP code"
+                    value={searchAddress.street}
+                    onChange={(event) => setSearchAddress({ ...searchAddress, street: event.target.value })}
+                    placeholder="Street"
+                /><br></br>
+                <input
+                    className="me-1 mb-1"
+                    type="text"
+                    value={searchAddress.city}
+                    onChange={(event) => setSearchAddress({ ...searchAddress, city: event.target.value })}
+                    placeholder="City"
+                /><br></br>
+                <input
+                    className="me-3 mb-1 state"
+                    type="text"
+                    value={searchAddress.state}
+                    onChange={(event) => setSearchAddress({ ...searchAddress, state: event.target.value })}
+                    placeholder="State"
                 />
-                <button onClick={handleSearch}>Search</button>
+                <button
+                    className="ms-5 btn btn-secondary btn-sm"
+                    onClick={handleSearch}>Search
+                </button>
             </div>
             <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
                 <Marker position={center} />

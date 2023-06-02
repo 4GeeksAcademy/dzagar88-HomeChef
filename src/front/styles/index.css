@@ -12,3 +12,19 @@
     width: 70%;
     height: 70vh;
 }
+
+.state {
+    width: 20%;
+}
+
+.title-font {
+    font-family: 'Bruno Ace SC', cursive;
+}
+
+.white-title {
+    color: white !important;
+}
+
+.lower-font {
+    font-family: 'Righteous', cursive;
+}
