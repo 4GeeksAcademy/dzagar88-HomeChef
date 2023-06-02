@@ -37,8 +37,8 @@ export const Diner = () => {
     return (
         <div className="container d-flex lower-font">
             <div><br></br>
-                <h1 className="bg-light d-flex justify-content-center me-2 title-font">Diner</h1>
-                <p className="bg-light d-flex justify-content-center me-2">Here you can search for a local "Chef"...</p>
+                <h1 className="d-flex justify-content-center me-2 title-font white-title brown-bg">Diner</h1>
+                <p className="d-flex justify-content-center me-2 lower-font white-title brown-bg">Here you can search for a local "Chef"...</p>
                 <input
                     className="me-1 mb-1"
                     type="text"
