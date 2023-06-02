@@ -24,10 +24,10 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto d-flex justify-content-center">
 						<Link to="">
-							<button className="btn btn-primary mx-2">{"Profile"}</button>
+							<button className="btn white-title oy-button mx-2">{"Profile"}</button>
 						</Link>
 						<form onSubmit={logout}>
-							<button className="btn btn-primary">Logout</button>
+							<button className="btn white-title oy-button">Logout</button>
 						</form>
 					</div>
 				</div>
