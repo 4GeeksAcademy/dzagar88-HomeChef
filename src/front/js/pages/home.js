@@ -6,6 +6,8 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chef } from '../component/chef';
 import { Diner } from '../component/diner';
+import homechefBG from "../../img/homechefBG.jpg"
+
 
 export const Home = () => {
 	const [alignment, setAlignment] = React.useState('diner');
@@ -30,7 +32,14 @@ export const Home = () => {
 
 	if (store.token) {
 		return (
-			<div className="container">
+			<div
+				style={{
+					backgroundImage: `url(${homechefBG})`,
+					backgroundSize: "cover",
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center"
+				}}
+			>
 				<ToggleButtonGroup
 					color="primary"
 					value={alignment}
@@ -39,16 +48,54 @@ export const Home = () => {
 					aria-label="Platform"
 					className="Toggle"
 				>
-					<ToggleButton value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
-					<ToggleButton value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
+					<ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
+					<ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
 				</ToggleButtonGroup>
 				{toggleButton()}
 			</div>
 		);
 	} else {
 		return (
-			<div className="text-center mt-5">
-				Welcome to HomeChef
+			<div className="text-center"
+				style={{
+					backgroundImage: `url(${homechefBG})`,
+					backgroundSize: "cover",
+					backgroundRepeat: "no-repeat",
+					backgroundPosition: "center",
+				}}>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<h1 className="white-title title-font">Welcome to HomeChef</h1>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+
 			</div>
 		);
 	}

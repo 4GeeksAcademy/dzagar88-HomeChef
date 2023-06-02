@@ -11,5 +11,28 @@
 .map-container {
     width: 70%;
     height: 70vh;
-    margin-left: 15%;
+}
+
+.state {
+    width: 20%;
+}
+
+.title-font {
+    font-family: 'Bruno Ace SC', cursive;
+}
+
+.white-title {
+    color: white !important;
+}
+
+.lower-font {
+    font-family: 'Righteous', cursive;
+}
+
+.brown-bg {
+    background-color: #904D00;
+}
+
+.oy-button {
+    background-color: #E5A45A;
 }
