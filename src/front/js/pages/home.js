@@ -7,11 +7,14 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chef } from '../component/chef';
 import { Diner } from '../component/diner';
 import homechefBG from "../../img/homechefBG.jpg"
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 export const Home = () => {
-	const [alignment, setAlignment] = React.useState('diner');
-
+	const [alignment, setAlignment] = React.useState('home');
+	const navigate = useNavigate();
 	const handleChange = (event, newAlignment) => {
 		setAlignment(newAlignment);
 	};
@@ -20,10 +23,20 @@ export const Home = () => {
 
 	const handleClick = (value) => {
 		console.log(`Button ${value} clicked!`);
+		if (value === "home") {
+			navigate("/");
+		} else if (value === "diner") {
+			navigate("/diner");
+		} else {
+			navigate("/chef");
+		}
+
 	};
 
 	const toggleButton = () => {
-		if (alignment === 'diner') {
+		if (alignment === 'home') {
+			return <Home />;
+		} else if (alignment === 'diner') {
 			return <Diner />;
 		} else {
 			return <Chef />;
@@ -46,12 +59,13 @@ export const Home = () => {
 					exclusive
 					onChange={handleChange}
 					aria-label="Platform"
-					className="Toggle"
+					className="Toggle margin16"
 				>
+					<ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton>
 					<ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
 					<ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
 				</ToggleButtonGroup>
-				{toggleButton()}
+				{/* {toggleButton()} */}
 			</div>
 		);
 	} else {
@@ -62,40 +76,9 @@ export const Home = () => {
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "center",
+					height: "783px"
 				}}>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<h1 className="white-title title-font">Welcome to HomeChef</h1>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-
+				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">Welcome to HomeChef</h1>
 			</div>
 		);
 	}
