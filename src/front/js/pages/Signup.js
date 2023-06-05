@@ -48,27 +48,33 @@ export const Signup = () => {
 	};
 
 	return (
-		<div className="text-center m-5">
-			<form onSubmit={handleSubmit}>
-				<input
-					className="mx-1 my-2"
-					placeholder="Username"
-					value={username}
-					onChange={handleUsernameChange}
-				></input>
-				<input
-					className="mx-1 my-2"
-					placeholder="Password"
-					type="password"
-					value={password}
-					onChange={handlePasswordChange}
-				></input>
-				<button className="btn btn-success mx-1" type="submit">
-					{"Submit"}
-				</button>
-			</form>
-			<div>
-				<img src={signup2} />
+		<div style={{
+			backgroundImage: `url(${homechefBG})`,
+			backgroundSize: "cover",
+			backgroundRepeat: "no-repeat",
+			backgroundPosition: "center",
+			height: "783px"
+		}} className="d-flex justify-content-center p-5">
+			<div className="position-absolute top-50 start-50 translate-middle">
+				<h2 className="white-title title-font opacity60">Enter a unique username<br></br>and password to sign up:</h2>
+				<form className="opacity60 d-flex justify-content-center" onSubmit={handleSubmit}>
+					<input
+						className="m-2"
+						placeholder="Username"
+						value={username}
+						onChange={handleUsernameChange}
+					></input>
+					<input
+						className="m-2"
+						placeholder="Password"
+						type="password"
+						value={password}
+						onChange={handlePasswordChange}
+					></input>
+					<button className="btn white-title oy-button m-2" type="submit">
+						{"Submit"}
+					</button>
+				</form>
 			</div>
 		</div>
 	);

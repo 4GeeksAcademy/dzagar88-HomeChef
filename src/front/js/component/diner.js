@@ -35,10 +35,16 @@ export const Diner = () => {
     if (!isLoaded) return <div>Loading...</div>;
 
     return (
-        <div className="container d-flex lower-font">
-            <div><br></br>
-                <h1 className="d-flex justify-content-center me-2 title-font white-title brown-bg">Diner</h1>
-                <p className="d-flex justify-content-center me-2 lower-font white-title brown-bg">Here you can search for a local "Chef"...</p>
+        <div style={{
+            backgroundImage: `url(${homechefBG})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            height: "783px"
+        }} className="d-flex">
+            <div className="margin16"><br></br>
+                <h1 className="d-flex justify-content-center me-2 title-font white-title opacity60">Diner</h1>
+                <p className="d-flex justify-content-center me-2 lower-font white-title opacity60">Here you can search for a local "Chef"...</p>
                 <input
                     className="me-1 mb-1"
                     type="text"
@@ -61,11 +67,12 @@ export const Diner = () => {
                     placeholder="State"
                 />
                 <button
-                    className="ms-5 btn btn-secondary btn-sm"
+                    className="btn white-title oy-button btn-sm mb-1 pb-1"
                     onClick={handleSearch}>Search
                 </button>
             </div>
-            <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
+            {/* <div className="margin16r"> */}
+            <GoogleMap zoom={10} center={center} mapContainerClassName="map-container margin16r mt-2">
                 <Marker position={center} />
                 <Circle
                     center={center}
@@ -80,5 +87,6 @@ export const Diner = () => {
                 />
             </GoogleMap>
         </div>
+        // </div>
     );
 };

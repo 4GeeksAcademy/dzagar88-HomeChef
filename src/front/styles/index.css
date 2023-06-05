@@ -36,3 +36,15 @@
 .oy-button {
     background-color: #E5A45A;
 }
+
+.opacity60 {
+    background-color: rgba(144, 77, 0, 0.6);
+}
+
+.margin16 {
+    margin-left: 16%;
+}
+
+.margin16r {
+    margin-right: 16%;
+}

@@ -10,21 +10,25 @@ export const Navbar = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const logout = () => {
-		localStorage.removeItem('token');
+		localStorage.removeItem("token");
 		setIsLoggedIn(false);
 		navigate("/");
+	};
+
+	const linkStyle = {
+		textDecoration: "none"
 	};
 
 	if (store.token) {
 		return (
 			<nav className="border border-dark navbar navbar-dark brown-bg">
 				<div className="container">
-					<Link to="/home">
-						<span className="navbar-brand mb-0 h1 title-font">HomeChef</span>
+					<Link to="/home" style={linkStyle}>
+						<span className="mb-0 h1 title-font white-title">HomeChef</span>
 					</Link>
 					<div className="ml-auto d-flex justify-content-center">
 						<Link to="">
-							<button className="btn white-title oy-button mx-2">{"Profile"}</button>
+							<button className="btn white-title oy-button mx-2">Profile</button>
 						</Link>
 						<form onSubmit={logout}>
 							<button className="btn white-title oy-button">Logout</button>
@@ -37,15 +41,15 @@ export const Navbar = () => {
 		return (
 			<nav className="border border-dark navbar navbar-light brown-bg">
 				<div className="container">
-					<Link to="/home">
-						<span className="navbar-brand mb-0 h1 title-font white-title">HomeChef</span>
+					<Link to="/home" style={linkStyle}>
+						<span className="mb-0 h1 title-font white-title">HomeChef</span>
 					</Link>
 					<div className="ml-auto">
 						<Link to="/signup">
-							<button className="btn white-title oy-button">{"Sign Up"}</button>
+							<button className="btn white-title oy-button">Sign Up</button>
 						</Link>
 						<Link to="/login">
-							<button className="btn white-title oy-button mx-2">{"Login"}</button>
+							<button className="btn white-title oy-button mx-2">Login</button>
 						</Link>
 					</div>
 				</div>
