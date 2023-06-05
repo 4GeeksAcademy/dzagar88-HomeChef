@@ -27,3 +27,33 @@ class User(db.Model):
             return True
         else: 
             return False
+        
+class MenuItem(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(40), nullable=False)
+    image = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+    ingredients = db.Column(db.String(500), nullable=False)
+    dietary_preferences = db.Column(db.String(500))
+    allergen = db.Column(db.String(500))
+    estimated_time = db.Column(db.String(100), nullable=False)
+    quantity_available = db.Column(db.String(100), nullable=False)
+    street = db.Column(db.String(500), nullable=False)
+    city = db.Column(db.String(500), nullable=False)
+    state = db.Column(db.String(500), nullable=False)
+
+    def to_dict(self):
+        return {
+            "id":self.id,
+            "title":self.title,
+            "image":self.image,
+            "description":self.description,
+            "ingredients":self.ingredients,
+            "dietary_preferences":self.dietary_preferences,
+            "allergen":self.allergen,
+            "estimated_time":self.estimated_time,
+            "quantity_available":self.quantity_available,
+            "street":self.street,
+            "city":self.city,
+            "state":self.state,
+        }

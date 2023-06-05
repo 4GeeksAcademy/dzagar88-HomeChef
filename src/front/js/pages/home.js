@@ -18,9 +18,7 @@ export const Home = () => {
 	const handleChange = (event, newAlignment) => {
 		setAlignment(newAlignment);
 	};
-
 	const { store, actions } = useContext(Context);
-
 	const handleClick = (value) => {
 		console.log(`Button ${value} clicked!`);
 		if (value === "home") {
@@ -32,7 +30,6 @@ export const Home = () => {
 		}
 
 	};
-
 	const toggleButton = () => {
 		if (alignment === 'home') {
 			return <Home />;
@@ -42,7 +39,6 @@ export const Home = () => {
 			return <Chef />;
 		}
 	}
-
 	if (store.token) {
 		return (
 			<div
