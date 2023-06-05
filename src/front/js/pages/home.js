@@ -7,21 +7,15 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chef } from '../component/chef';
 import { Diner } from '../component/diner';
 import homechefBG from "../../img/homechefBG.jpg"
-
-
 export const Home = () => {
 	const [alignment, setAlignment] = React.useState('diner');
-
 	const handleChange = (event, newAlignment) => {
 		setAlignment(newAlignment);
 	};
-
 	const { store, actions } = useContext(Context);
-
 	const handleClick = (value) => {
 		console.log(`Button ${value} clicked!`);
 	};
-
 	const toggleButton = () => {
 		if (alignment === 'diner') {
 			return <Diner />;
@@ -29,7 +23,6 @@ export const Home = () => {
 			return <Chef />;
 		}
 	}
-
 	if (store.token) {
 		return (
 			<div
@@ -62,40 +55,9 @@ export const Home = () => {
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "center",
+					height: "783px"
 				}}>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<h1 className="white-title title-font">Welcome to HomeChef</h1>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-
+				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle">Welcome to HomeChef</h1>
 			</div>
 		);
 	}

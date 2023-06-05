@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			token: undefined
+			token: undefined,
+			menuItem: []
 		},
 		actions: {
 			login: (username, password) => {
@@ -25,7 +26,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({
 					token: token
 				})
-			}
+			},
+			addMenuItem: (newMenuItem) => {
+				console.log("menu item", newMenuItem)
+				let store = getStore()
+				fetch(process.env.BACKEND_URL + '/api/chef', {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify(newMenuItem)
+				})
+					.then(response => response.json())
+					.then(info => setStore({ menuItem: info }))
+					.catch(error => console.log(error))
+			},
 		}
 	};
 };
