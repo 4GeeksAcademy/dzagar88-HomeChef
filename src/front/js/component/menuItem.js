@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext.js";
+import { Chef } from "../component/chef.js";
+import { getMenuItemUtilityClass } from "@mui/material";
 
 
 export const MenuItem = () => {
-    const [menuItems, setMenuItems] = useState([]);
     const { store, actions } = useContext(Context);
 
     const [titleInput, setTitleInput] = useState("");

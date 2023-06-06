@@ -46,6 +46,10 @@ export const Chef = () => {
         getMenuItems()
     }, [store.token]);
 
+    useEffect(() => {
+        getMenuItems()
+    }, [menuItems])
+
     return (
         <div>
             <button onClick={toggleMenuItemForm}>Add</button>
