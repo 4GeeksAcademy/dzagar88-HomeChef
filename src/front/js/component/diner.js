@@ -86,7 +86,7 @@ export const Diner = () => {
                 </ToggleButtonGroup>
                 <div className="container"><br></br>
                     <h1 style={{ width: "12%" }} className="d-flex justify-content-center me-2 title-font white-title opacity60">Diner</h1>
-                    <p style={{ width: "28%", fontSize: "25px" }} className="d-flex justify-content-center me-2 lower-font white-title opacity60">Here you can search for a local "Chef"...</p>
+                    <p style={{ width: "37%", fontSize: "25px" }} className="d-flex justify-content-center me-2 lower-font white-title opacity60">Here you can search for a local "Chef"...</p>
                 </div>
                 <div className="container marginleft20px">
                     <input

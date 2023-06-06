@@ -64,13 +64,12 @@ export const Home = () => {
 				</ToggleButtonGroup> */}
 				{/* {toggleButton()} */}
 				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">
-					{"If you're hungry for food click "}
+					{"Hungry for food? Click "}
 					<Link to="/diner">
 						{"here"}
 					</Link>
-
-					<h1 className="white-title title-font d-flex justify-content-center p-2">Or</h1>
-					{"If you're hungry for money click "}
+					<h1 className="white-title title-font d-flex justify-content-center p-2">Or...</h1>
+					{"Hungry for money? Click "}
 					<Link to="/chef">
 						{"here"}
 					</Link>
