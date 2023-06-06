@@ -52,3 +52,7 @@
 .no-underline {
     text-decoration: none !important;
 }
+
+.marginleft20px {
+    margin-left: 500px;
+}
