@@ -27,17 +27,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					token: token
 				})
 			},
-			addMenuItem: (newMenuItem) => {
-				console.log("menu item", newMenuItem)
-				let store = getStore()
-				fetch(process.env.BACKEND_URL + '/api/chef', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify(newMenuItem)
-				})
-					.then(response => response.json())
-					.then(info => setStore({ menuItem: info }))
-					.catch(error => console.log(error))
+			checkForToken() {
+				if (!localStorage.getItem("token")) return
+				const actions = getActions()
+				console.log(localStorage.getItem("token"))
+				actions.setToken(localStorage.getItem("token"))
 			},
 		}
 	};
