@@ -14,7 +14,7 @@
 }
 
 .state {
-    width: 20%;
+    width: 5%;
 }
 
 .title-font {
@@ -26,7 +26,7 @@
 }
 
 .lower-font {
-    font-family: 'Righteous', cursive;
+    font-family: 'Architects Daughter', cursive;
 }
 
 .brown-bg {
@@ -47,4 +47,12 @@
 
 .margin16r {
     margin-right: 16%;
+}
+
+.no-underline {
+    text-decoration: none !important;
+}
+
+.marginleft20px {
+    margin-left: 500px;
 }
