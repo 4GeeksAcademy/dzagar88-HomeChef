@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext.js";
-import { Chef } from "../component/chef.js";
-import { getMenuItemUtilityClass } from "@mui/material";
 
 
 export const MenuItem = () => {
@@ -54,6 +52,7 @@ export const MenuItem = () => {
             })
             .then((data) => {
                 // Handle the response data (e.g., show success message, update UI)
+                actions.getMenuItems()
                 console.log('Menu item added successfully:', data);
             })
             .catch((error) => {

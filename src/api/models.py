@@ -33,7 +33,7 @@ class MenuItem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(40), nullable=False)
-    image = db.Column(db.String(100), nullable=False)
+    image = db.Column(db.String(10000), nullable=False)
     description = db.Column(db.String(500), nullable=False)
     ingredients = db.Column(db.String(500), nullable=False)
     dietary_preferences = db.Column(db.String(500))
