@@ -7,8 +7,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chef } from '../component/chef';
 import { Diner } from '../component/diner';
 import homechefBG from "../../img/homechefBG.jpg"
-import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -46,10 +46,11 @@ export const Home = () => {
 					backgroundImage: `url(${homechefBG})`,
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
-					backgroundPosition: "center"
+					backgroundPosition: "center",
+					height: "783px"
 				}}
 			>
-				<ToggleButtonGroup
+				{/* <ToggleButtonGroup
 					color="primary"
 					value={alignment}
 					exclusive
@@ -60,8 +61,20 @@ export const Home = () => {
 					<ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton>
 					<ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
 					<ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
-				</ToggleButtonGroup>
+				</ToggleButtonGroup> */}
 				{/* {toggleButton()} */}
+				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">
+					{"Hungry for food? Click "}
+					<Link to="/diner">
+						{"here"}
+					</Link>
+					<h1 className="white-title title-font d-flex justify-content-center p-2">Or...</h1>
+					{"Hungry for money? Click "}
+					<Link to="/chef">
+						{"here"}
+					</Link>
+				</h1>
+
 			</div>
 		);
 	} else {
