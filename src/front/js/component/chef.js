@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { MenuItem } from "../component/menuItem.js";
+import { Context } from "../store/appContext.js";
 import homechefBG from "../../img/homechefBG.jpg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useNavigate } from "react-router-dom";
 
-
 export const Chef = () => {
+    const { store, actions } = useContext(Context);
     const [menuItems, setMenuItems] = useState([]);
     const [showMenuItemForm, setShowMenuItemForm] = useState(false);
 
@@ -18,6 +19,15 @@ export const Chef = () => {
     const toggleMenuItemForm = () => {
         setShowMenuItemForm(!showMenuItemForm);
     };
+
+    useEffect(() => {
+        if (!store.token) return
+        actions.getMenuItems()
+    }, [store.token]);
+
+    useEffect(() => {
+        actions.getMenuItems()
+    }, [])
 
     const [alignment, setAlignment] = React.useState('chef');
     const navigate = useNavigate();
@@ -47,10 +57,6 @@ export const Chef = () => {
         }
     };
 
-
-
-
-
     return (
         <div style={{
             backgroundImage: `url(${homechefBG})`,
@@ -79,6 +85,21 @@ export const Chef = () => {
                     className="btn white-title oy-button my-2"
                     onClick={toggleMenuItemForm}>Add</button>
                 {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
+                        <div>
+                {store.menuItems.map(item => (
+                    <div key={item.id} className="card">
+                        <h3>{item.title}</h3>
+                        <img src={item.image} alt="Menu Item" />
+                        <p>{item.description}</p>
+                        <p>{item.ingredients}</p>
+                        <p>{item.dietary_preferences}</p>
+                        <p>{item.allergen}</p>
+                        <p>{item.estimated_time}</p>
+                        <p>{item.quantity_available}</p>
+                        <p>{item.street}</p>
+                        <p>{item.city}</p>
+                        <p>{item.state}</p>
+                    </div>
             </div>
         </div>
     );

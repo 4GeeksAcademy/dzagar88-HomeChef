@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, MenuItem
 from api.utils import generate_sitemap, APIException
 
-from flask_jwt_extended import  jwt_required, create_access_token
+from flask_jwt_extended import  jwt_required, create_access_token, get_jwt_identity
 
 api = Blueprint('api', __name__)
 
@@ -35,15 +35,20 @@ def handle_login():
     return jsonify(access_token), 200
 
 @api.route('/chef', methods=['POST'])
+@jwt_required()
 def add_menu_item():
     body = request.get_json()
 
+    chef_username = get_jwt_identity()
+    chef = User.query.filter_by(username = chef_username).one_or_none()
+
     menu_item = MenuItem(
+        user_id=chef.id,
         image=body["image"],
         title=body["title"],
         ingredients=body["ingredients"],
         estimated_time=body["estimated_time"],
-        dietary_preference=body["dietary_preference"],
+        dietary_preferences=body["dietary_preferences"],
         allergen=body["allergen"],
         quantity_available=body["quantity_available"],
         description=body["description"],
@@ -57,6 +62,21 @@ def add_menu_item():
     all_menus = list(map(lambda x: x.to_dict(), menu_query))
 
     return jsonify(all_menus), 200
+
+@api.route('/chef',methods=['GET'])
+@jwt_required()
+def view_menu_items():
+    chef_username = get_jwt_identity()
+    chef = User.query.filter_by(username = chef_username).one_or_none()
+
+    if chef:
+        menu_items = MenuItem.query.filter_by(user_id=chef.id)
+
+    menu_items_dictionaries = []
+    for menu_item in menu_items:
+        menu_items_dictionaries.append(menu_item.to_dict())
+
+    return jsonify(menu_items_dictionaries),200
 
 if __name__ == '__main__':
     api.run()
