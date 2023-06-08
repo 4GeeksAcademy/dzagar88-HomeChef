@@ -6,8 +6,6 @@ import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.js";
 
-
-
 const libraries = ["places"];
 
 export const Diner = () => {
