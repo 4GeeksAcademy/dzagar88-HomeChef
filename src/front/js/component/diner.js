@@ -5,8 +5,6 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from "react-router-dom";
 
-
-
 const libraries = ["places"];
 
 export const Diner = () => {
