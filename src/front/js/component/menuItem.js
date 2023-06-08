@@ -1,8 +1,10 @@
-import { CardActions, accordionActionsClasses } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext.js";
+
 
 export const MenuItem = () => {
-    const [menuItems, setMenuItems] = useState([]);
+    const { store, actions } = useContext(Context);
+
     const [titleInput, setTitleInput] = useState("");
     const [imageInput, setImageInput] = useState("");
     const [descriptionInput, setDescriptionInput] = useState("");
@@ -15,25 +17,8 @@ export const MenuItem = () => {
     const [cityInput, setCityInput] = useState("");
     const [stateInput, setStateInput] = useState("");
 
-    const [editMode, setEditMode] = useState(false);
-    const [editItemId, setEditItemId] = useState(null);
-
     const addMenuItem = () => {
-        const newMenuItem = {
-            id: Date.now(),
-            title: titleInput,
-            image: imageInput,
-            description: descriptionInput,
-            ingredients: ingredientsInput,
-            dietaryPreferences: dietaryPreferencesInput,
-            allergen: allergenInput,
-            estimateTime: estimatedTimeInput,
-            quantityAvailable: quantityAvailableInput,
-            street: streetInput,
-            city: cityInput,
-            state: stateInput,
-        };
-        setMenuItems(prevItems => [...prevItems, newMenuItem]);
+        testFunction();
         setTitleInput("");
         setImageInput("");
         setDescriptionInput("");
@@ -47,59 +32,14 @@ export const MenuItem = () => {
         setStateInput("");
     };
 
-    console.log("menuitem", menuItems)
-
-    const removeMenuItem = id => {
-        setMenuItems(prevItems => prevItems.filter(item => item.id !== id));
-        if (editItemId === id) {
-            setEditMode(false);
-            setEditItemId(null);
-        }
-    };
-
-    const editMenuItem = id => {
-        const menuItem = menuItems.find(item => item.id === id);
-        if (menuItem) {
-            setEditMode(true);
-            setEditItemId(id);
-            setTitleInput(menuItem.title);
-            setImageInput(menuItem.image);
-            setDescriptionInput(menuItem.description);
-        }
-    };
-
-    const updateMenuItem = () => {
-        const updatedMenuItem = {
-            id: editItemId,
-            title: titleInput,
-            image: imageInput,
-            description: descriptionInput,
-        };
-        setMenuItems(prevItems =>
-            prevItems.map(item => (item.id === editItemId ? updatedMenuItem : item))
-        );
-        setTitleInput('');
-        setImageInput('');
-        setDescriptionInput('');
-        setEditMode(false);
-        setEditItemId(null);
-    };
-
-    const handleAddOrUpdate = () => {
-        if (editMode) {
-            updateMenuItem();
-        } else {
-            addMenuItem();
-        }
-    };
-
-    const testFunction = (titleInput, imageInput, descriptionInput, ingredientsInput, dietaryPreferences, allergenInput, estimatedTimeInput, quantityAvailableInput, streetInput, cityInput, stateInput) => {
+    const testFunction = () => {
         fetch(process.env.BACKEND_URL + '/api/chef', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                "Authorization": `Bearer ${store.token}`
             },
-            body: JSON.stringify({ titleInput, imageInput, descriptionInput, ingredientsInput, dietaryPreferences, allergenInput, estimatedTimeInput, quantityAvailableInput, streetInput, cityInput, stateInput }),
+            body: JSON.stringify({ title: titleInput, image: imageInput, description: descriptionInput, ingredients: ingredientsInput, dietary_preferences: dietaryPreferencesInput, allergen: allergenInput, estimated_time: estimatedTimeInput, quantity_available: quantityAvailableInput, street: streetInput, city: cityInput, state: stateInput }),
         })
             .then((response) => {
                 if (response.ok) {
@@ -112,6 +52,7 @@ export const MenuItem = () => {
             })
             .then((data) => {
                 // Handle the response data (e.g., show success message, update UI)
+                actions.getMenuItems()
                 console.log('Menu item added successfully:', data);
             })
             .catch((error) => {
@@ -184,23 +125,9 @@ export const MenuItem = () => {
                 value={stateInput}
                 onChange={(e) => setStateInput(e.target.value)}
             />
-            {/* <button onClick={handleAddOrUpdate}>
-                {editMode ? 'Update Dish' : 'Add Dish'}
-            </button> */}
             <button onClick={() => {
-                testFunction(menuItems)
-            }}></button>
-            <div>
-                {menuItems.map(item => (
-                    <div key={item.id} className="card">
-                        <h3>{item.title}</h3>
-                        <img src={item.image} alt="Menu Item" />
-                        <p>{item.description}</p>
-                        <button onClick={() => editMenuItem(item.id)}>Edit</button>
-                        <button onClick={() => removeMenuItem(item.id)}>Remove</button>
-                    </div>
-                ))}
-            </div>
+                addMenuItem()
+            }}>Add Dish</button>
         </div>
     );
 };
