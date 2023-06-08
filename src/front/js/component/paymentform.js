@@ -15,13 +15,13 @@ function PaymentForm() {
   const handleSubmit = e => {
     e.preventDefault();
 
-    // Create a payment object or payload
+    
     const payment = {
       amount: parseFloat(amount),
       recipient: recipient,
     };
 
-    // Make the fetch request to the payment service endpoint
+    
     fetch('payment-service-url', {
       method: 'POST',
       headers: {
@@ -31,14 +31,14 @@ function PaymentForm() {
     })
       .then(response => response.json())
       .then(data => {
-        // Process the response from the payment service
+        
         console.log(data);
-        // Reset the form
+       
         setAmount('');
         setRecipient('');
       })
       .catch(error => {
-        // Handle any errors that occurred during the fetch request
+        
         console.log(error);
       });
   };
