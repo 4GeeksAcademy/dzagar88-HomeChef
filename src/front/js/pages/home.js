@@ -56,7 +56,8 @@ export const Home = () => {
 					exclusive
 					onChange={handleChange}
 					aria-label="Platform"
-					className="Toggle margin16"
+					className="Toggle d-flex justify-content-center"
+
 				>
 					<ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton>
 					<ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>

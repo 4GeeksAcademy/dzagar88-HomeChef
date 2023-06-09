@@ -63,24 +63,27 @@ export const Chef = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            height: "783px"
-        }}>
+            height: "1000px"
+        }}><br />
             <ToggleButtonGroup
                 color="primary"
                 value={alignment}
                 exclusive
                 onChange={handleChange}
                 aria-label="Platform"
-                className="Toggle margin16"
+                className="Toggle d-flex justify-content-center"
             >
                 {/* <ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton> */}
                 <ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
                 <ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
             </ToggleButtonGroup>
             <div className="container"><br></br>
-                <h1 style={{ width: "12%" }}
-                    className="white-title title-font opacity60 d-flex justify-content-center">Chef</h1><br></br>
-                <div style={{ width: "28%", fontSize: "25px" }} className="white-title lower-font opacity60">Click "Add" to add a menu item:</div>
+                <h1
+                    style={{ width: "85%" }}
+                    className="white-title title-font opacity60 d-flex justify-content-center m-auto">Chef</h1><br></br>
+                <div
+                    style={{ fontSize: "20px", width: "85%" }}
+                    className="white-title lower-font opacity60 m-auto p-1">Click "Add" to add a menu item:</div>
                 <button
                     className="btn white-title oy-button my-2"
                     onClick={toggleMenuItemForm}>Add</button>
