@@ -68,7 +68,7 @@ export const Home = () => {
 					<Link to="/diner">
 						{"here"}
 					</Link>
-					<h1 className="white-title title-font d-flex justify-content-center p-2">Or...</h1>
+					<p className="white-title title-font d-flex justify-content-center p-2">Or...</p>
 					{"Hungry for money? Click "}
 					<Link to="/chef">
 						{"here"}

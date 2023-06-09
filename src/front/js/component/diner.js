@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useLoadScript, GoogleMap, Marker, Circle } from "@react-google-maps/api";
 import homechefBG from "../../img/homechefBG.jpg"
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from "react-router-dom";
-
-
+import { Context } from "../store/appContext.js";
 
 const libraries = ["places"];
 
@@ -26,7 +25,7 @@ export const Diner = () => {
         state: ""
     });
     const [center, setCenter] = useState({ lat: 30.6697, lng: -81.4626 });
-
+    const { store, actions } = useContext(Context);
     const handleSearch = () => {
         const address = `${searchAddress.street}, ${searchAddress.city}, ${searchAddress.state}`;
         const geocoder = new window.google.maps.Geocoder();
@@ -34,6 +33,7 @@ export const Diner = () => {
             if (status === "OK" && results.length > 0) {
                 const location = results[0].geometry.location;
                 setCenter({ lat: location.lat(), lng: location.lng() });
+                actions.getMenuItems()
             } else {
                 console.log("Geocode was not successful for the following reason: " + status);
                 alert("Geocode was not successful for the following reason: " + status);
