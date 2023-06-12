@@ -22,6 +22,20 @@ export const Home = () => {
 					height: "783px"
 				}}
 			>
+				{/* <ToggleButtonGroup
+					color="primary"
+					value={alignment}
+					exclusive
+					onChange={handleChange}
+					aria-label="Platform"
+					className="Toggle d-flex justify-content-center"
+
+				>
+					<ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton>
+					<ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
+					<ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
+				</ToggleButtonGroup> */}
+				{/* {toggleButton()} */}
 				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">
 					{"Hungry for food? Click "}
 					<Link to="/diner">
