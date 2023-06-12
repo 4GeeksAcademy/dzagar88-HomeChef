@@ -7,6 +7,8 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    name = db.Column(db.String(80), unique=False)
+    bio = db. Column(db.String(500), unique=False)
     menu_items = db.relationship("MenuItem",backref="user")
 
     def __repr__(self):
@@ -16,6 +18,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "username": self.username,
+            "name": self.name,
+            "bio": self.bio
             # do not serialize the password, its a security breach
         }
     def __init__(self, username, password):

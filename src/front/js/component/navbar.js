@@ -27,7 +27,7 @@ export const Navbar = () => {
 						<span className="mb-0 h1 title-font white-title">HomeChef</span>
 					</Link>
 					<div className="ml-auto d-flex justify-content-center">
-						<Link to="">
+						<Link to="/profile">
 							<button className="btn white-title oy-button mx-2">Profile</button>
 						</Link>
 						<form onSubmit={logout}>

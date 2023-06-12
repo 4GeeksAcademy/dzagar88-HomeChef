@@ -78,5 +78,21 @@ def view_menu_items():
 
     return jsonify(menu_items_dictionaries),200
 
+@api.route('/profile',methods=['POST'])
+@jwt_required()
+def view_profile():
+    body = request.json
+    user_id = get_jwt_identity()
+
+    user = User.query.get(user_id)
+    if not user:
+        raise APIException("User not found", 404)
+
+    user.name = body["name"]
+    user.bio = body["bio"]
+    db.session.commit()
+
+    return jsonify(User.to_dict()), 201
+
 if __name__ == '__main__':
     api.run()
