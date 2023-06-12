@@ -82,9 +82,9 @@ def view_menu_items():
 @jwt_required()
 def view_profile():
     body = request.json
-    user_id = get_jwt_identity()
+    user_username = get_jwt_identity()
 
-    user = User.query.get(user_id)
+    user = User.query.filter_by(username = user_username).one_or_none()
     if not user:
         raise APIException("User not found", 404)
 
@@ -92,7 +92,7 @@ def view_profile():
     user.bio = body["bio"]
     db.session.commit()
 
-    return jsonify(User.to_dict()), 201
+    return jsonify(user.to_dict()), 201
 
 if __name__ == '__main__':
     api.run()

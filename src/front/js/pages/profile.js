@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from "../store/appContext.js";
 
 export const Profile = () => {
@@ -8,9 +8,15 @@ export const Profile = () => {
 
     const saveProfile = () => {
         handleSubmit();
-        setNameInput("");
-        setBioInput("");
     }
+
+    useEffect(() => {
+        // Retrieve the last submitted information from localStorage
+        const storedName = localStorage.getItem("name");
+        const storedBio = localStorage.getItem("bio");
+        setNameInput(storedName || "");
+        setBioInput(storedBio || "");
+    }, []);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -35,6 +41,12 @@ export const Profile = () => {
             .then((data) => {
                 // Handle the response from the backend
                 console.log(data); // You can customize this based on your requirements
+
+                setNameInput(data.name || "");
+                setBioInput(data.bio || "");
+
+                localStorage.setItem("name", data.name || "");
+                localStorage.setItem("bio", data.bio || "");
             })
             .catch((error) => {
                 // Handle any errors that occur during the request
