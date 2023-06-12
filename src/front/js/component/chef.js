@@ -93,22 +93,20 @@ export const Chef = () => {
                 {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
             </div>
             {store.menuItems.map(item => (
-                <div>
-                    <div key={item.id} className="container card title-font border border-dark"
-                        style={{ width: "20rem" }}>
-                        <h3>{item.title}</h3>
-                        <img src={item.image} alt="Menu Item" />
-                        <p>{item.description}</p>
-                        <p>{item.ingredients}</p>
-                        <p>{item.dietary_preferences}</p>
-                        <p>{item.allergen}</p>
-                        <p>{item.estimated_time}</p>
-                        <p>{item.quantity_available}</p>
-                        <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
-                        <p>{item.street}</p>
-                        <p>{item.city}</p>
-                        <p>{item.state}</p>
-                    </div><br />
+                <div key={item.id} className="container card title-font border border-dark"
+                    style={{ width: "20rem" }}>
+                    <h3>{item.title}</h3>
+                    <img src={item.image} alt="Menu Item" />
+                    <p>{item.description}</p>
+                    <p>{item.ingredients}</p>
+                    <p>{item.dietary_preferences}</p>
+                    <p>{item.allergen}</p>
+                    <p>{item.estimated_time}</p>
+                    <p>{item.quantity_available}</p>
+                    <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
+                    <p>{item.street}</p>
+                    <p>{item.city}</p>
+                    <p>{item.state}</p>
                 </div>
             ))}
         </div>
