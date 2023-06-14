@@ -22,7 +22,7 @@ function PaymentForm() {
     };
 
     
-    fetch('payment-service-url', {
+    fetch('pk_test_51KvnZsFdExN3QIKDhq17pMc75MP7lsnC9DQySLAPUpqiFi3NsaJKmG6H1nDlugeVeTbRYqNeSxTedtAm8ypmY7UR002ozhqubw', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
