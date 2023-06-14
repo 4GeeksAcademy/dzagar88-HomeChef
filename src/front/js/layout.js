@@ -10,6 +10,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Signup } from "./pages/Signup";
 import Login from "./pages/Login";
+import { Profile } from "./pages/profile";
 
 import { Chef } from "./component/chef";
 import { Diner } from "./component/diner";
@@ -34,6 +35,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Chef />} path="/chef" />
                         <Route element={<Diner />} path="/diner" />
+                        <Route element={<Profile />} path="/profile" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

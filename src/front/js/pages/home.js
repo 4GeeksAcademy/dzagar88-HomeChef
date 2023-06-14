@@ -2,43 +2,15 @@ import { useContext } from "react";
 import * as React from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { Chef } from '../component/chef';
 import { Diner } from '../component/diner';
 import homechefBG from "../../img/homechefBG.jpg"
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-
-
 export const Home = () => {
-	const [alignment, setAlignment] = React.useState('home');
-	const navigate = useNavigate();
-	const handleChange = (event, newAlignment) => {
-		setAlignment(newAlignment);
-	};
 	const { store, actions } = useContext(Context);
-	const handleClick = (value) => {
-		console.log(`Button ${value} clicked!`);
-		if (value === "home") {
-			navigate("/");
-		} else if (value === "diner") {
-			navigate("/diner");
-		} else {
-			navigate("/chef");
-		}
 
-	};
-	const toggleButton = () => {
-		if (alignment === 'home') {
-			return <Home />;
-		} else if (alignment === 'diner') {
-			return <Diner />;
-		} else {
-			return <Chef />;
-		}
-	}
 	if (store.token) {
 		return (
 			<div
