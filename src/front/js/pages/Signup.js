@@ -1,12 +1,8 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../store/appContext";
+import React, { useState } from "react";
 import "../../styles/home.css";
-import signup2 from "../../img/signup2.png"
 import homechefBG from "../../img/homechefBG.jpg"
 
 export const Signup = () => {
-	const { store, actions } = useContext(Context);
-
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 

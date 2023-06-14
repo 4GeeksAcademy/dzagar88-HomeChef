@@ -9,10 +9,15 @@ import { useNavigate } from "react-router-dom";
 export const Chef = () => {
     const { store, actions } = useContext(Context);
     const [menuItems, setMenuItems] = useState([]);
+    const [menuItemsMap, setMenuItemsMap] = useState({});
     const [showMenuItemForm, setShowMenuItemForm] = useState(false);
 
     const addMenuItem = (newMenuItem) => {
         setMenuItems((prevItems) => [...prevItems, newMenuItem]);
+        setMenuItemsMap((prevMap) => ({
+            ...prevMap,
+            [newMenuItem.id]: newMenuItem.address
+        }));
         setShowMenuItemForm(false);
     };
 
@@ -44,7 +49,6 @@ export const Chef = () => {
         } else {
             navigate("/chef");
         }
-
     };
 
     const toggleButton = () => {
@@ -63,7 +67,6 @@ export const Chef = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            height: "1000px"
         }}><br />
             <ToggleButtonGroup
                 color="primary"
@@ -90,7 +93,8 @@ export const Chef = () => {
                 {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
             </div>
             {store.menuItems.map(item => (
-                <div key={item.id} className="card">
+                <div key={item.id} className="container card title-font border border-dark"
+                    style={{ width: "20rem" }}>
                     <h3>{item.title}</h3>
                     <img src={item.image} alt="Menu Item" />
                     <p>{item.description}</p>
@@ -99,6 +103,7 @@ export const Chef = () => {
                     <p>{item.allergen}</p>
                     <p>{item.estimated_time}</p>
                     <p>{item.quantity_available}</p>
+                    <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
                     <p>{item.street}</p>
                     <p>{item.city}</p>
                     <p>{item.state}</p>
