@@ -76,7 +76,6 @@ export const Chef = () => {
                 aria-label="Platform"
                 className="Toggle d-flex justify-content-center"
             >
-                {/* <ToggleButton className="bg-light border" value="home" onClick={() => handleClick('home')}>Home</ToggleButton> */}
                 <ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
                 <ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
             </ToggleButtonGroup>
@@ -97,16 +96,16 @@ export const Chef = () => {
                     style={{ width: "20rem" }}>
                     <h3>{item.title}</h3>
                     <img src={item.image} alt="Menu Item" />
-                    <p>{item.description}</p>
-                    <p>{item.ingredients}</p>
-                    <p>{item.dietary_preferences}</p>
-                    <p>{item.allergen}</p>
-                    <p>{item.estimated_time}</p>
-                    <p>{item.quantity_available}</p>
+                    <p><u>Description:</u> {item.description}</p>
+                    <p><u>Ingredients:</u> {item.ingredients}</p>
+                    <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
+                    <p><u>Allergen:</u> {item.allergen}</p>
+                    <p><u>Estimated Time:</u> {item.estimated_time}</p>
+                    <p><u>Quantity Available:</u> {item.quantity_available}</p>
                     <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
-                    <p>{item.street}</p>
-                    <p>{item.city}</p>
-                    <p>{item.state}</p>
+                    <p><u>Street:</u> {item.street}</p>
+                    <p><u>City:</u> {item.city}</p>
+                    <p><u>State:</u> {item.state}</p>
                 </div>
             ))}
         </div>

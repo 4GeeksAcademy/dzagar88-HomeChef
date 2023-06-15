@@ -23,6 +23,7 @@ const injectContext = PassedComponent => {
 
 		useEffect(() => {
 			state.actions.checkForToken()
+			state.actions.getMenuItemsForGoogleMaps()
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

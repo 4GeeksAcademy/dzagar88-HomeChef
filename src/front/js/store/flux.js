@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: undefined,
 			menuItems: [],
+			menuItemsforGoogleMaps: [],
 		},
 		actions: {
 			login: (username, password) => {
@@ -60,6 +61,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 						//error handling
 						console.log(error);
 					})
+			},
+			getMenuItemsForGoogleMaps() {
+				const store = getStore();
+				fetch(process.env.BACKEND_URL + '/api/chef', {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${store.token}`
+					},
+				})
+					.then(response => {
+						console.log(response.ok); // will be true if the response is successful
+						console.log(response.status); // the status code = 200 or code = 400, etc.
+						if (response.ok !== true) throw new Error('Response is not ok', response.status);
+						return response.json(); // (returns promise) will try to parse the result as JSON and return a promise that you can .then for results
+					})
+					.then(menuItems => {
+						// Convert city, state, and address to latitude and longitude
+						const geocodePromises = menuItems.map(item => {
+							const address = `${item.address}, ${item.city}, ${item.state}`;
+							return fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`)
+								.then(response => response.json())
+								.then(data => {
+									if (data.results.length > 0) {
+										const { lat, lng } = data.results[0].geometry.location;
+										return {
+											...item,
+											latitude: lat,
+											longitude: lng
+										};
+									}
+									return item; // If geocoding fails, retain the original item
+								});
+						});
+
+						return Promise.all(geocodePromises);
+					})
+					.then(menuItemsWithCoordinates => {
+						setStore({
+							menuItemsforGoogleMaps: menuItemsWithCoordinates
+						});
+						console.log(menuItemsWithCoordinates); // This will print on the console the modified object with latitude and longitude
+					})
+					.catch(error => {
+						// Error handling
+						console.log(error);
+					});
 			}
 		}
 	};
