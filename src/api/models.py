@@ -9,7 +9,7 @@ class User(db.Model):
     password = db.Column(db.String(80), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     name = db.Column(db.String(80), unique=False)
-    bio = db. Column(db.String(500), unique=False)
+    bio = db.Column(db.String(500), unique=False)
     menu_items = db.relationship("MenuItem",backref="user")
 
     def __repr__(self):

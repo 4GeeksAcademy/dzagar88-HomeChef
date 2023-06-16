@@ -39,7 +39,6 @@ export const Diner = () => {
             if (status === "OK" && results.length > 0) {
                 const location = results[0].geometry.location;
                 setCenter({ lat: location.lat(), lng: location.lng() });
-                updateMapWithMarkers()
             } else {
                 console.log("Geocode was not successful for the following reason: " + status);
                 alert("Geocode was not successful for the following reason: " + status);
@@ -61,20 +60,6 @@ export const Diner = () => {
         }
     };
 
-    useEffect(() => {
-        // Load the Google Maps JavaScript API
-        const loadGoogleMapsAPI = () => {
-            const script = document.createElement('script');
-            script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
-            script.async = true;
-            script.defer = true;
-            document.body.appendChild(script);
-            script.onload = initMap;
-        };
-
-        loadGoogleMapsAPI();
-    }, []);
-
     const initMap = () => {
         const newMap = new window.google.maps.Map(document.getElementById('map'), {
             center: { lat: 0, lng: 0 },
@@ -85,6 +70,20 @@ export const Diner = () => {
 
         getMenuItems();
     };
+
+    const loadGoogleMapsAPI = () => {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+        script.onload = initMap;
+    };
+
+    useEffect(() => {
+        // Load the Google Maps JavaScript API
+        loadGoogleMapsAPI();
+    }, []);
 
     const [pin, setPin] = useState([])
     const [map, setMap] = useState(null)
