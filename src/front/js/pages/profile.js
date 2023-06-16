@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
+import homechefBG from "../../img/homechefBG.jpg";
 import { Context } from "../store/appContext.js";
 
 export const Profile = () => {
@@ -54,25 +55,40 @@ export const Profile = () => {
             });
     }
 
-
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    id="name"
-                    value={nameInput}
-                    onChange={(e) => setNameInput(e.target.value)} />
+        <div className=''
+            style={{
+                backgroundImage: `url(${homechefBG})`,
+                backgroundSize: "cover",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+            }}>
+            <div className='d-flex justify-content-center mt-0'>
+                <form onSubmit={handleSubmit}>
+                    <div className="border border-dark mt-2">
+                        <input
+                            type="text"
+                            placeholder="Name"
+                            id="name"
+                            value={nameInput}
+                            onChange={(e) => setNameInput(e.target.value)} />
+                    </div>
+                    <div className='mt-1 mb-2'>
+                        <textarea
+                            style={{ width: "190px" }}
+                            id="bio"
+                            placeholder="About You"
+                            value={bioInput}
+                            onChange={(e) => setBioInput(e.target.value)} />
+                    </div>
+                    <div className='d-flex justify-content-center'>
+                        <button
+                            className='btn white-title oy-button my-2 border border-dark'
+                            type="submit">Save</button>
+                    </div>
+                </form>
             </div>
-            <div>
-                <textarea
-                    id="bio"
-                    placeholder="About You"
-                    value={bioInput}
-                    onChange={(e) => setBioInput(e.target.value)} />
-            </div>
-            <button type="submit">Save</button>
-        </form>
+
+        </div>
     );
 };
