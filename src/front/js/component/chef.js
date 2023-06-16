@@ -5,13 +5,11 @@ import homechefBG from "../../img/homechefBG.jpg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useNavigate } from "react-router-dom";
-
 export const Chef = () => {
     const { store, actions } = useContext(Context);
     const [menuItems, setMenuItems] = useState([]);
     const [menuItemsMap, setMenuItemsMap] = useState({});
     const [showMenuItemForm, setShowMenuItemForm] = useState(false);
-
     const addMenuItem = (newMenuItem) => {
         setMenuItems((prevItems) => [...prevItems, newMenuItem]);
         setMenuItemsMap((prevMap) => ({
@@ -20,26 +18,21 @@ export const Chef = () => {
         }));
         setShowMenuItemForm(false);
     };
-
     const toggleMenuItemForm = () => {
         setShowMenuItemForm(!showMenuItemForm);
     };
-
     useEffect(() => {
         if (!store.token) return
         actions.getMenuItems()
     }, [store.token]);
-
     useEffect(() => {
         actions.getMenuItems()
     }, [])
-
     const [alignment, setAlignment] = React.useState('chef');
     const navigate = useNavigate();
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
-
     const handleClick = (value) => {
         console.log(`Button ${value} clicked!`);
         if (value === "home") {
@@ -50,7 +43,6 @@ export const Chef = () => {
             navigate("/chef");
         }
     };
-
     const toggleButton = () => {
         if (alignment === 'home') {
             return <Home />;
@@ -60,13 +52,13 @@ export const Chef = () => {
             return <Chef />;
         }
     };
-
     return (
         <div style={{
             backgroundImage: `url(${homechefBG})`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
+            height: "975px",
         }}><br />
             <ToggleButtonGroup
                 color="primary"
