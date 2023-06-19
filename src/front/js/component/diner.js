@@ -87,10 +87,10 @@ export const Diner = () => {
         });
     };
 
-    useEffect(() => {
-        // Load the Google Maps JavaScript API
-        loadGoogleMapsAPI();
-    }, []);
+    // useEffect(() => {
+    //     // Load the Google Maps JavaScript API
+    //     loadGoogleMapsAPI();
+    // }, []);
 
     useEffect(() => {
         if (map && store.menuItemsforGoogleMaps.length > 0) {
@@ -209,7 +209,7 @@ export const Diner = () => {
                     </div>
                 </div>
                 <div
-                    className="container d-flex justify-content-center">
+                    className="container d-flex justify-content-center mt-1">
                     <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
                         {/* <Marker position={center} /> */}
                         {store.menuItemsforGoogleMaps.map((item, index) => {
@@ -233,7 +233,7 @@ export const Diner = () => {
                             }}
                         />
                     </GoogleMap>
-                </div>
+                </div><br /><br />
             </div>
         </div>
     );

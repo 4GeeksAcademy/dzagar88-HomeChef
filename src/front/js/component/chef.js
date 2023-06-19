@@ -92,20 +92,22 @@ export const Chef = () => {
                 {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
             </div>
             {store.menuItems.map(item => (
-                <div key={item.id} className="container card title-font border border-dark"
-                    style={{ width: "20rem" }}>
-                    <h3>{item.title}</h3>
-                    <img src={item.image} alt="Menu Item" />
-                    <p><u>Description:</u> {item.description}</p>
-                    <p><u>Ingredients:</u> {item.ingredients}</p>
-                    <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
-                    <p><u>Allergen:</u> {item.allergen}</p>
-                    <p><u>Estimated Time:</u> {item.estimated_time}</p>
-                    <p><u>Quantity Available:</u> {item.quantity_available}</p>
-                    <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
-                    <p><u>Street:</u> {item.street}</p>
-                    <p><u>City:</u> {item.city}</p>
-                    <p><u>State:</u> {item.state}</p>
+                <div key={item.id}>
+                    <div key={item.id} className="container card title-font border border-dark"
+                        style={{ width: "20rem" }}>
+                        <h3>{item.title}</h3>
+                        <img src={item.image} alt="Menu Item" />
+                        <p><u>Description:</u> {item.description}</p>
+                        <p><u>Ingredients:</u> {item.ingredients}</p>
+                        <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
+                        <p><u>Allergen:</u> {item.allergen}</p>
+                        <p><u>Estimated Time:</u> {item.estimated_time}</p>
+                        <p><u>Quantity Available:</u> {item.quantity_available}</p>
+                        <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
+                        <p><u>Street:</u> {item.street}</p>
+                        <p><u>City:</u> {item.city}</p>
+                        <p><u>State:</u> {item.state}</p>
+                    </div><br />
                 </div>
             ))}
         </div>
