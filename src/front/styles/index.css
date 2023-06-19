@@ -56,3 +56,17 @@
 .marginleft20px {
     margin-left: 500px;
 }
+
+.footer-card {
+    color: black;
+}
+
+.img-footer {
+    width: 7rem;
+    height: 7rem;
+    background: #F8F8F8; 
+	border: solid #BDBDBD 1px; 
+	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+	-webkit-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+	-moz-box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5)  ; 
+}
