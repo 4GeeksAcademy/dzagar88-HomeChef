@@ -36,6 +36,11 @@ export const Diner = () => {
         libraries,
     });
 
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+        libraries,
+    });
+
     const [pin, setPin] = useState([]);
     const [map, setMap] = useState(null);
 
@@ -50,97 +55,42 @@ export const Diner = () => {
         }
     };
 
+    useEffect(() => {
+        // Load the Google Maps JavaScript API
+        const loadGoogleMapsAPI = () => {
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
+            script.async = true;
+            script.defer = true;
+            document.body.appendChild(script);
+            script.onload = initMap;
+        };
+
+        loadGoogleMapsAPI();
+    }, []);
+
     const initMap = () => {
-        if (window.google && window.google.maps) {
-            const newMap = new window.google.maps.Map(document.getElementById('map'), {
-                center: { lat: 0, lng: 0 },
-                zoom: 10
-            });
-
-            setMap(newMap);
-
-            getMenuItems();
-        }
-    };
-
-
-    const loadGoogleMapsAPI = () => {
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`;
-        script.async = true;
-        script.defer = true;
-        document.body.appendChild(script);
-        script.onload = initMap;
-    };
-
-    const handleSearch = () => {
-        const address = `${searchAddress.street}, ${searchAddress.city}, ${searchAddress.state}`;
-        const geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ address: address }, (results, status) => {
-            if (status === "OK" && results.length > 0) {
-                const location = results[0].geometry.location;
-                setCenter({ lat: location.lat(), lng: location.lng() });
-            } else {
-                console.log("Geocode was not successful for the following reason: " + status);
-                alert("Geocode was not successful for the following reason: " + status);
-            }
+        const newMap = new window.google.maps.Map(document.getElementById('map'), {
+            center: { lat: 0, lng: 0 },
+            zoom: 10
         });
     };
 
-    // useEffect(() => {
-    //     // Load the Google Maps JavaScript API
-    //     loadGoogleMapsAPI();
-    // }, []);
-    // useEffect(() => {
-    //     // Load the Google Maps JavaScript API
-    //     loadGoogleMapsAPI();
-    // }, []);
-
-    useEffect(() => {
-        if (map && store.menuItemsforGoogleMaps.length > 0) {
-            updateMapWithMarkers();
-        }
-    }, [map, store.menuItemsforGoogleMaps]);
+    const [pin, setPin] = useState([])
+    const [map, setMap] = useState(null)
 
     const updateMapWithMarkers = () => {
         const bounds = new window.google.maps.LatLngBounds()
         store.menuItemsforGoogleMaps.forEach(menuItem => {
             const position = {
-                lat: menuItem.latitude,
-                lng: menuItem.longitude
-            };
-            const marker = new window.google.maps.Marker({ position: position, map: map, title: menuItem.title });
-            bounds.extend(position);
-            setPin(prevPins => [...prevPins, marker]);
+                lat: menuItem.latitude, long: menuItem.longitude
+            }
+            const marker = new window.google.maps.Marker({ position: position, map: map, title: menuItem.title })
+            bounds.extend(position)
+            setPin(prvPin => [...prvPin, pin])
         });
-        map.fitBounds(bounds);
+        map.fitBounds(bounds)
     };
-
-    const deg2rad = (deg) => {
-        return deg * (Math.PI / 180);
-    };
-
-    const calculateDistance = (lat1, lon1, lat2, lon2) => {
-        const R = 6371; // Radius of the Earth in kilometers
-        const dLat = deg2rad(lat2 - lat1);
-        const dLon = deg2rad(lon2 - lon1);
-        const a =
-            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        const distance = R * c;
-        return distance;
-    };
-
-    const sortedMenuItems = store.menuItemsforGoogleMaps.sort((a, b) => {
-        const aDistance = calculateDistance(center.lat, center.lng, a.latitude, a.longitude);
-        const bDistance = calculateDistance(center.lat, center.lng, b.latitude, b.longitude);
-        return aDistance - bDistance;
-    });
-
-    if (loadError) return <div>Error loading maps</div>;
-    if (!isLoaded) return <div>Loading...</div>;
 
     return (
         <div

@@ -50,7 +50,9 @@ export const Chef = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
+            height: "975px",
         }}><br />
+
             <ToggleButtonGroup
                 color="primary"
                 value={alignment}
@@ -59,20 +61,25 @@ export const Chef = () => {
                 aria-label="Platform"
                 className="Toggle d-flex justify-content-center"
             >
+
                 <ToggleButton className="bg-light border" value="diner" onClick={() => handleClick('diner')}>Diner</ToggleButton>
                 <ToggleButton className="bg-light border" value="chef" onClick={() => handleClick('chef')}>Chef</ToggleButton>
             </ToggleButtonGroup>
+
             <div className="container"><br></br>
                 <h1
                     style={{ width: "85%" }}
                     className="white-title title-font opacity60 d-flex justify-content-center m-auto">Chef</h1><br></br>
                 <div
                     style={{ fontSize: "20px", width: "85%" }}
-                    className="white-title lower-font opacity60 m-auto p-1">Click "Add" to add a menu item:</div>
-                <button
-                    className="btn white-title oy-button my-2"
-                    onClick={toggleMenuItemForm}>Add</button>
-                {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
+                    className="white-title lower-font opacity60 m-auto p-1 d-flex justify-content-center">Click "Add" to add a menu item:</div>
+                <div className="d-flex justify-content-center">
+                    <button
+                        className="btn white-title oy-button my-2"
+                        onClick={toggleMenuItemForm}>Add</button>
+                    {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
+                </div>
+
             </div>
             {store.menuItems.map(item => (
                 <div key={item.id}>

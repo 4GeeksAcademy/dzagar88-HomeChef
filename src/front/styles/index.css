@@ -7,52 +7,40 @@
     align-items:center;
     margin:0% auto;
 }
-
 .map-container {
     width: 70%;
     height: 70vh;
 }
-
 .state {
     width: 5%;
 }
-
 .title-font {
     font-family: 'Bruno Ace SC', cursive;
 }
-
 .white-title {
     color: white !important;
 }
-
 .lower-font {
     font-family: 'Architects Daughter', cursive;
 }
-
 .brown-bg {
     background-color: #904D00;
 }
-
 .oy-button {
     background-color: #E5A45A;
 }
-
 .opacity60 {
     background-color: rgba(144, 77, 0, 0.6);
 }
-
 .margin16 {
     margin-left: 16%;
 }
-
 .margin16r {
     margin-right: 16%;
 }
-
 .no-underline {
     text-decoration: none !important;
 }
-
 .marginleft20px {
     margin-left: 500px;
 }
