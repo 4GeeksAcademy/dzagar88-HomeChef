@@ -5,13 +5,11 @@ import homechefBG from "../../img/homechefBG.jpg"
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useNavigate } from "react-router-dom";
-
 export const Chef = () => {
     const { store, actions } = useContext(Context);
     const [menuItems, setMenuItems] = useState([]);
     const [menuItemsMap, setMenuItemsMap] = useState({});
     const [showMenuItemForm, setShowMenuItemForm] = useState(false);
-
     const addMenuItem = (newMenuItem) => {
         setMenuItems((prevItems) => [...prevItems, newMenuItem]);
         setMenuItemsMap((prevMap) => ({
@@ -20,26 +18,21 @@ export const Chef = () => {
         }));
         setShowMenuItemForm(false);
     };
-
     const toggleMenuItemForm = () => {
         setShowMenuItemForm(!showMenuItemForm);
     };
-
     useEffect(() => {
         if (!store.token) return
         actions.getMenuItems()
     }, [store.token]);
-
     useEffect(() => {
         actions.getMenuItems()
     }, [])
-
     const [alignment, setAlignment] = React.useState('chef');
     const navigate = useNavigate();
     const handleChange = (event, newAlignment) => {
         setAlignment(newAlignment);
     };
-
     const handleClick = (value) => {
         console.log(`Button ${value} clicked!`);
         if (value === "home") {
@@ -48,16 +41,6 @@ export const Chef = () => {
             navigate("/diner");
         } else {
             navigate("/chef");
-        }
-    };
-
-    const toggleButton = () => {
-        if (alignment === 'home') {
-            return <Home />;
-        } else if (alignment === 'diner') {
-            return <Diner />;
-        } else {
-            return <Chef />;
         }
     };
 
@@ -92,20 +75,22 @@ export const Chef = () => {
                 {showMenuItemForm && <MenuItem addMenuItem={addMenuItem} />}
             </div>
             {store.menuItems.map(item => (
-                <div key={item.id} className="container card title-font border border-dark"
-                    style={{ width: "20rem" }}>
-                    <h3>{item.title}</h3>
-                    <img src={item.image} alt="Menu Item" />
-                    <p><u>Description:</u> {item.description}</p>
-                    <p><u>Ingredients:</u> {item.ingredients}</p>
-                    <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
-                    <p><u>Allergen:</u> {item.allergen}</p>
-                    <p><u>Estimated Time:</u> {item.estimated_time}</p>
-                    <p><u>Quantity Available:</u> {item.quantity_available}</p>
-                    <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
-                    <p><u>Street:</u> {item.street}</p>
-                    <p><u>City:</u> {item.city}</p>
-                    <p><u>State:</u> {item.state}</p>
+                <div key={item.id}>
+                    <div key={item.id} className="container card title-font border border-dark"
+                        style={{ width: "20rem" }}>
+                        <h3>{item.title}</h3>
+                        <img src={item.image} alt="Menu Item" />
+                        <p><u>Description:</u> {item.description}</p>
+                        <p><u>Ingredients:</u> {item.ingredients}</p>
+                        <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
+                        <p><u>Allergen:</u> {item.allergen}</p>
+                        <p><u>Estimated Time:</u> {item.estimated_time}</p>
+                        <p><u>Quantity Available:</u> {item.quantity_available}</p>
+                        <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
+                        <p><u>Street:</u> {item.street}</p>
+                        <p><u>City:</u> {item.city}</p>
+                        <p><u>State:</u> {item.state}</p>
+                    </div><br />
                 </div>
             ))}
         </div>

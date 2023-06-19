@@ -5,7 +5,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import { useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext.js";
-import { DinerMenuItem } from "../component/dinerMenuItem.js";
+import { MenuList } from "../component/menuList.js";
 
 const libraries = ["places"];
 
@@ -87,10 +87,10 @@ export const Diner = () => {
         });
     };
 
-    useEffect(() => {
-        // Load the Google Maps JavaScript API
-        loadGoogleMapsAPI();
-    }, []);
+    // useEffect(() => {
+    //     // Load the Google Maps JavaScript API
+    //     loadGoogleMapsAPI();
+    // }, []);
 
     useEffect(() => {
         if (map && store.menuItemsforGoogleMaps.length > 0) {
@@ -111,6 +111,29 @@ export const Diner = () => {
         });
         map.fitBounds(bounds);
     };
+
+    const deg2rad = (deg) => {
+        return deg * (Math.PI / 180);
+    };
+
+    const calculateDistance = (lat1, lon1, lat2, lon2) => {
+        const R = 6371; // Radius of the Earth in kilometers
+        const dLat = deg2rad(lat2 - lat1);
+        const dLon = deg2rad(lon2 - lon1);
+        const a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        const distance = R * c;
+        return distance;
+    };
+
+    const sortedMenuItems = store.menuItemsforGoogleMaps.sort((a, b) => {
+        const aDistance = calculateDistance(center.lat, center.lng, a.latitude, a.longitude);
+        const bDistance = calculateDistance(center.lat, center.lng, b.latitude, b.longitude);
+        return aDistance - bDistance;
+    });
 
     if (loadError) return <div>Error loading maps</div>;
     if (!isLoaded) return <div>Loading...</div>;
@@ -211,7 +234,6 @@ export const Diner = () => {
                 <div
                     className="container d-flex justify-content-center">
                     <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
-                        {/* <Marker position={center} /> */}
                         {store.menuItemsforGoogleMaps.map((item, index) => {
                             const position = {
                                 lat: item.latitude,
@@ -233,6 +255,10 @@ export const Diner = () => {
                             }}
                         />
                     </GoogleMap>
+                </div>
+                <div>
+                    <MenuList menuItems={sortedMenuItems} onMenuItemClick={handleMenuItemClick} />
+                    {selectedMenuItem && <DinerMenuItem menuItem={selectedMenuItem} />}
                 </div>
             </div>
         </div>

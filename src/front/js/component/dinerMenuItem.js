@@ -1,18 +1,18 @@
 import React from "react";
 
-export const DinerMenuItem = ({ MenuItem }) => {
+export const DinerMenuItem = ({ menuItem }) => {
     return (
         <div>
-            <h3>{MenuItem.title}</h3>
-            <p><u>Description:</u> {MenuItem.description}</p>
-            <p><u>Ingredients:</u> {MenuItem.ingredients}</p>
-            <p><u>Dietary Preferences:</u> {MenuItem.dietary_preferences}</p>
-            <p><u>Allergen:</u> {MenuItem.allergen}</p>
-            <p><u>Estimated Time:</u> {MenuItem.estimated_time}</p>
-            <p><u>Quantity Available:</u> {MenuItem.quantity_available}</p>
-            <p><u>Street:</u> {MenuItem.street}</p>
-            <p><u>City:</u> {MenuItem.city}</p>
-            <p><u>State:</u> {MenuItem.state}</p>
+            <h3>{menuItem.title}</h3>
+            <p><u>Description:</u> {menuItem.description}</p>
+            <p><u>Ingredients:</u> {menuItem.ingredients}</p>
+            <p><u>Dietary Preferences:</u> {menuItem.dietary_preferences}</p>
+            <p><u>Allergen:</u> {menuItem.allergen}</p>
+            <p><u>Estimated Time:</u> {menuItem.estimated_time}</p>
+            <p><u>Quantity Available:</u> {menuItem.quantity_available}</p>
+            <p><u>Street:</u> {menuItem.street}</p>
+            <p><u>City:</u> {menuItem.city}</p>
+            <p><u>State:</u> {menuItem.state}</p>
         </div>
     );
 }
