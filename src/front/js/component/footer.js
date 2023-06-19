@@ -3,23 +3,12 @@ import homechefBG from "../../img/homechefBG.jpg"
 import dan1 from "../../img/dan1.jpg"
 import maiLinh1 from "../../img/maiLinh1.jpg"
 import jose1 from "../../img/jose1.jpg"
-<<<<<<< HEAD
 
-=======
->>>>>>> 5b2fcb763f52a01a4759546eab0ccdf846e71742
 export const Footer = () => (
 	<footer className="border border-dark py-4 text-center brown-bg white-title">
-
 		<p>
 			<i className="far fa-copyright"></i> Copyright 2023 - <span className="title-font">HomeChef</span>
 		</p>
-<<<<<<< HEAD
-
-		<p className="title-font">Created By:</p>
-
-=======
-		<p className="title-font">Created By:</p>
->>>>>>> 5b2fcb763f52a01a4759546eab0ccdf846e71742
 		<div className="container d-flex justify-content-center title-font">
 			<div>
 				<img className="img-footer me-2" src={`${dan1}`} />
@@ -34,12 +23,6 @@ export const Footer = () => (
 				<p className="card-name">Jose</p>
 			</div>
 		</div>
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> 5b2fcb763f52a01a4759546eab0ccdf846e71742
 	</footer>
 );
 
