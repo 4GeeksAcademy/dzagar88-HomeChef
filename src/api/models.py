@@ -10,11 +10,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
     name = db.Column(db.String(80), unique=False)
     bio = db.Column(db.String(500), unique=False)
-<<<<<<< HEAD
-    menu_items = db.relationship("MenuItem", backref="user")
-=======
     menu_items = db.relationship("MenuItem",backref="user")
->>>>>>> b06b9210f9a7b3ed604c5818daa8a6eb3ee9f7c3
 
     def __repr__(self):
         return f"<User {self.username}>"
