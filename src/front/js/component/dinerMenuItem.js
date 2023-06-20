@@ -1,4 +1,5 @@
 import React from "react";
+import PayPal from "./paypalint.js";
 
 export const DinerMenuItem = ({ menuItem }) => {
     return (
@@ -15,6 +16,7 @@ export const DinerMenuItem = ({ menuItem }) => {
                 <p><strong><u>Street:</u></strong> {menuItem.street}</p>
                 <p><strong><u>City:</u></strong> {menuItem.city}</p>
                 <p><strong><u>State:</u></strong> {menuItem.state}</p>
+                <PayPal />
             </div><br />
         </div>
     );

@@ -233,10 +233,10 @@ export const Diner = () => {
                             center={center}
                             radius={10 * 1609.34} // Convert 10 miles to meters
                             options={{
-                                strokeColor: "#FF0000",
+                                strokeColor: "#E5A45A",
                                 strokeOpacity: 0.8,
                                 strokeWeight: 2,
-                                fillColor: "#FF0000",
+                                fillColor: "#E5A45A",
                                 fillOpacity: 0.35,
                             }}
                         />
