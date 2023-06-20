@@ -28,10 +28,10 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto d-flex justify-content-center">
 						<Link to="/profile">
-							<button className="btn white-title oy-button mx-2">Profile</button>
+							<button className="btn btn-sm white-title oy-button mx-2 title-font shadow1">Profile</button>
 						</Link>
 						<form onSubmit={logout}>
-							<button className="btn white-title oy-button">Logout</button>
+							<button className="btn btn-sm white-title oy-button title-font shadow1">Logout</button>
 						</form>
 					</div>
 				</div>
@@ -46,10 +46,10 @@ export const Navbar = () => {
 					</Link>
 					<div className="ml-auto">
 						<Link to="/signup">
-							<button className="btn white-title oy-button">Sign Up</button>
+							<button className="btn btn-sm white-title oy-button title-font shadow1">Sign Up</button>
 						</Link>
 						<Link to="/login">
-							<button className="btn white-title oy-button mx-2">Login</button>
+							<button className="btn btn-sm white-title oy-button mx-2 title-font shadow1">Login</button>
 						</Link>
 					</div>
 				</div>

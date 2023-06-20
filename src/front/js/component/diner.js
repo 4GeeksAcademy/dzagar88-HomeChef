@@ -161,21 +161,21 @@ export const Diner = () => {
                 <div className="container">
                     <br />
                     <h1
-                        style={{ width: "85%" }}
-                        className="white-title title-font opacity60 d-flex justify-content-center m-auto"
+                        style={{ width: "28%" }}
+                        className="white-title title-font opacity60 d-flex justify-content-center m-auto shadow1"
                     >
                         Diner
                     </h1>
                     <br />
                     <p
                         style={{ fontSize: "20px", width: "85%" }}
-                        className="white-title lower-font opacity60 m-auto p-1 d-flex justify-content-center"
+                        className="white-title title-font opacity60 m-auto p-1 d-flex justify-content-center shadow1"
                     >
                         Here you can search for local homecooked meals...
                     </p>
                 </div>
                 <div className="container d-flex justify-content-center flex-wrap">
-                    <div className="input-container">
+                    <div className="input-container title-font">
                         <input
                             className="my-2 me-1"
                             type="text"
@@ -186,7 +186,7 @@ export const Diner = () => {
                             placeholder="Street"
                         />
                     </div>
-                    <div className="input-container">
+                    <div className="input-container title-font">
                         <input
                             className="my-2 me-1"
                             type="text"
@@ -197,7 +197,7 @@ export const Diner = () => {
                             placeholder="City"
                         />
                     </div>
-                    <div className="input-container">
+                    <div className="input-container title-font">
                         <input
                             className="my-2"
                             type="text"
@@ -210,7 +210,7 @@ export const Diner = () => {
                     </div>
                     <div className="container d-flex justify-content-center">
                         <button
-                            className="btn white-title oy-button btn m-3"
+                            className="btn white-title oy-button btn m-3 shadow1 title-font"
                             onClick={handleSearch}
                         >
                             Search
@@ -219,7 +219,7 @@ export const Diner = () => {
                 </div>
                 <div
                     className="container d-flex justify-content-center mt-1">
-                    <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
+                    <GoogleMap zoom={10} center={center} mapContainerClassName="map-container border border-dark shadow1">
                         {store.menuItemsforGoogleMaps.map((item, index) => {
                             const position = {
                                 lat: item.latitude,

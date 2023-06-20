@@ -138,18 +138,19 @@ export const MenuItem = () => {
             <br />
             <div
                 style={{ fontSize: "35px", width: "85%" }}
-                className="title-font white-title opacity60 m-auto">Address Information:</div>
+                className="title-font white-title opacity60 m-auto shadow1">Address Information:</div>
             <br />
             <input
                 type="text"
                 placeholder="Street*"
                 value={streetInput}
                 onChange={(e) => setStreetInput(e.target.value)}
-                style={{ width: "85%" }}
+                style={{ width: "84%" }}
             />
             <br />
             <input
                 type="text"
+                className="me-1"
                 placeholder="City*"
                 value={cityInput}
                 onChange={(e) => setCityInput(e.target.value)}
@@ -161,12 +162,12 @@ export const MenuItem = () => {
                 placeholder="State*"
                 value={stateInput}
                 onChange={(e) => setStateInput(e.target.value)}
-                style={{ width: "25%" }}
+                style={{ width: "23%" }}
             />
             <br />
             <button
                 style={{ width: "25%" }}
-                className="btn white-title oy-button my-2"
+                className="btn white-title oy-button my-2 shadow1"
                 onClick={addMenuItem}>Add Dish</button>
         </div >
     );

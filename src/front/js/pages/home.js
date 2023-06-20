@@ -19,7 +19,7 @@ export const Home = () => {
 					height: "783px"
 				}}
 			>
-				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">
+				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2 shadow1">
 					{"Hungry for food? Click "}
 					<Link to="/diner">
 						{"here"}
@@ -43,7 +43,7 @@ export const Home = () => {
 					backgroundPosition: "center",
 					height: "783px"
 				}}>
-				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2">Welcome to HomeChef</h1>
+				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2 shadow1">Welcome to HomeChef</h1>
 			</div>
 		);
 	}

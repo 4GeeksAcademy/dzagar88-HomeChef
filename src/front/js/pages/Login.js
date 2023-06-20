@@ -37,11 +37,11 @@ export default function Login() {
       height: "783px"
     }} className="d-flex justify-content-center p-5">
       <div className="position-absolute top-50 start-50 translate-middle">
-        <h2 className="white-title title-font opacity60 p-2">Enter your username<br></br>and password to login:</h2>
-        <form className="opacity60 d-flex justify-content-center pt-2" onSubmit={handleSubmit}>
+        <h2 className="white-title title-font opacity60 p-2 shadow1">Enter your username<br></br>and password to login:</h2>
+        <form className="opacity60 p-2 shadow1" onSubmit={handleSubmit}>
           <label className="mt-1">
             <input
-              className=""
+              className="title-font me-1"
               type="username"
               placeholder="Username"
               value={username}
@@ -50,15 +50,17 @@ export default function Login() {
           </label>
           <label className="mt-1">
             <input
-              className="mx-1"
+              className="title-font me-1"
               placeholder="Password"
               type="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
           </label>
-          <div className="btn white-title oy-button mb-2" onClick={() => handleSubmit()}>
-            Log In
+          <div className="d-flex justify-content-center mt-3">
+            <div className="btn white-title oy-button mb-2 title-font shadow1" onClick={() => handleSubmit()}>
+              Log In
+            </div>
           </div>
         </form>
       </div>

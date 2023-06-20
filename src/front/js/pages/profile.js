@@ -62,11 +62,13 @@ export const Profile = () => {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                height: "630px"
             }}>
-            <div className='d-flex justify-content-center mt-0'>
+            <div className='d-flex justify-content-center mt-0 title-font'>
                 <form onSubmit={handleSubmit}>
-                    <div className="border border-dark mt-2">
+                    <div className="border border-dark shadow1 my-2 ">
                         <input
+                            style={{ width: "20rem" }}
                             type="text"
                             placeholder="Name"
                             id="name"
@@ -75,7 +77,8 @@ export const Profile = () => {
                     </div>
                     <div className='mt-1 mb-2'>
                         <textarea
-                            style={{ width: "190px" }}
+                            className='border border-dark shadow1'
+                            style={{ width: "20rem", height: "500px" }}
                             id="bio"
                             placeholder="About You"
                             value={bioInput}
@@ -83,7 +86,7 @@ export const Profile = () => {
                     </div>
                     <div className='d-flex justify-content-center'>
                         <button
-                            className='btn white-title oy-button my-2 border border-dark'
+                            className='btn white-title oy-button my-2 shadow1'
                             type="submit">Save</button>
                     </div>
                 </form>
