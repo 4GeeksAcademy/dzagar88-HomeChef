@@ -50,7 +50,6 @@ export const Chef = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
-            height: "975px",
         }}><br />
 
             <ToggleButtonGroup
@@ -73,7 +72,7 @@ export const Chef = () => {
                 <div
                     style={{ fontSize: "20px", width: "85%" }}
                     className="white-title lower-font opacity60 m-auto p-1 d-flex justify-content-center">Click "Add" to add a menu item:</div>
-                <div className="d-flex justify-content-center">
+                <div className="">
                     <button
                         className="btn white-title oy-button my-2"
                         onClick={toggleMenuItemForm}>Add</button>

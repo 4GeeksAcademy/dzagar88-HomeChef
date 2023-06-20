@@ -241,7 +241,7 @@ export const Diner = () => {
                             }}
                         />
                     </GoogleMap>
-                </div>
+                </div><br /><br />
                 <div>
                     <MenuList menuItems={sortedMenuItems} onMenuItemClick={handleMenuItemClick} />
                     {selectedMenuItem && <DinerMenuItem menuItem={selectedMenuItem} />}

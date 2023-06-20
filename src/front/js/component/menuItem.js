@@ -166,7 +166,7 @@ export const MenuItem = () => {
             <br />
             <button
                 style={{ width: "25%" }}
-                className="my-1"
+                className="btn white-title oy-button my-2"
                 onClick={addMenuItem}>Add Dish</button>
         </div >
     );
