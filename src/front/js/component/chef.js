@@ -86,19 +86,20 @@ export const Chef = () => {
                         style={{ width: "20rem" }}>
                         <h3>{item.title}</h3>
                         <img src={item.image} alt="Menu Item" />
-                        <p><u>Description:</u> {item.description}</p>
-                        <p><u>Ingredients:</u> {item.ingredients}</p>
-                        <p><u>Dietary Preferences:</u> {item.dietary_preferences}</p>
-                        <p><u>Allergen:</u> {item.allergen}</p>
-                        <p><u>Estimated Time:</u> {item.estimated_time}</p>
-                        <p><u>Quantity Available:</u> {item.quantity_available}</p>
+                        <p><strong><u>Description:</u></strong> {item.description}</p>
+                        <p><strong><u>Ingredients:</u></strong> {item.ingredients}</p>
+                        <p><strong><u>Dietary Preferences:</u></strong> {item.dietary_preferences}</p>
+                        <p><strong><u>Allergen:</u></strong> {item.allergen}</p>
+                        <p><strong><u>Estimated Time:</u></strong> {item.estimated_time}</p>
+                        <p><strong><u>Quantity Available:</u></strong> {item.quantity_available}</p>
                         <p>{menuItemsMap[item.id]}</p> {/* Render the address using the menuItemsMap */}
-                        <p><u>Street:</u> {item.street}</p>
-                        <p><u>City:</u> {item.city}</p>
-                        <p><u>State:</u> {item.state}</p>
+                        <p><strong><u>Street:</u></strong> {item.street}</p>
+                        <p><strong><u>City:</u></strong> {item.city}</p>
+                        <p><strong><u>State:</u></strong> {item.state}</p>
                     </div><br />
                 </div>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 }
