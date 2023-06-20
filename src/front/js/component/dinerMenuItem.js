@@ -3,8 +3,9 @@ import React from "react";
 export const DinerMenuItem = ({ menuItem }) => {
     return (
         <div>
-            <div className="container card title-font border border-dark my-3">
+            <div className="container card title-font border border-dark my-3" style={{ width: "20rem" }}>
                 <h3>{menuItem.title}</h3>
+                <img src={menuItem.image} alt="Menu Item" />
                 <p><strong><u>Description:</u></strong> {menuItem.description}</p>
                 <p><strong><u>Ingredients:</u></strong> {menuItem.ingredients}</p>
                 <p><strong><u>Dietary Preferences:</u></strong> {menuItem.dietary_preferences}</p>
