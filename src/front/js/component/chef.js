@@ -50,6 +50,7 @@ export const Chef = () => {
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
+            backgroundAttachment: "fixed"
             // height: "930px"
         }}><br />
 

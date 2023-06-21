@@ -131,6 +131,7 @@ export const Diner = () => {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                backgroundAttachment: "fixed"
             }}
         >
             <div>

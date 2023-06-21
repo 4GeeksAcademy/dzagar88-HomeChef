@@ -34,6 +34,7 @@ export default function Login() {
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
+      backgroundAttachment: "fixed",
       height: "783px"
     }} className="d-flex justify-content-center p-5">
       <div className="position-absolute top-50 start-50 translate-middle">

@@ -41,6 +41,7 @@ export const Home = () => {
 					backgroundSize: "cover",
 					backgroundRepeat: "no-repeat",
 					backgroundPosition: "center",
+					backgroundAttachment: "fixed",
 					height: "783px"
 				}}>
 				<h1 className="white-title title-font position-absolute top-50 start-50 translate-middle opacity60 p-2 shadow1">Welcome to HomeChef</h1>

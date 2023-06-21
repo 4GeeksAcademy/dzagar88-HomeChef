@@ -62,6 +62,7 @@ export const Profile = () => {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                backgroundAttachment: "fixed",
                 height: "630px"
             }}>
             <div className='d-flex justify-content-center mt-0 title-font'>
