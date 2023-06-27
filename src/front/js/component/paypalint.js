@@ -1,16 +1,16 @@
-import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import React from 'react';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 export default function App() {
     return (
-        <PayPalScriptProvider options={{ clientId: "AWjsOR868ZQ2rN7aPDkyhcAt_ck6YZtFWsm5z2zRlGLPg1TE2_5X0tel-DW5fLqiIPd7VgeoWn3rdYmf" }}>
+        <PayPalScriptProvider options={{ clientId: process.env.PAYPAL_CLIENT_ID }}>
             <PayPalButtons
                 createOrder={(data, actions) => {
                     return actions.order.create({
                         purchase_units: [
                             {
                                 amount: {
-                                    value: "$30.00",
+                                    value: "30.00",
                                 },
                             },
                         ],
