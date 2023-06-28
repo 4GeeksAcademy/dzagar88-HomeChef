@@ -13,6 +13,7 @@ export const DinerMenuItem = ({ menuItem }) => {
                 <p><strong><u>Allergen:</u></strong> {menuItem.allergen}</p>
                 <p><strong><u>Estimated Time:</u></strong> {menuItem.estimated_time}</p>
                 <p><strong><u>Quantity Available:</u></strong> {menuItem.quantity_available}</p>
+                <p><strong><u>Price:</u></strong> {menuItem.price}</p>
                 <p><strong><u>Street:</u></strong> {menuItem.street}</p>
                 <p><strong><u>City:</u></strong> {menuItem.city}</p>
                 <p><strong><u>State:</u></strong> {menuItem.state}</p>
