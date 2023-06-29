@@ -15,6 +15,11 @@ export const Diner = () => {
         setSelectedMenuItem(DinerMenuItem)
     }
 
+    useEffect(() => {
+        actions.getMenuItemsForGoogleMaps()
+    }, []);
+
+
     const [alignment, setAlignment] = useState('diner');
     const navigate = useNavigate();
     const handleChange = (event, newAlignment) => {
@@ -50,6 +55,12 @@ export const Diner = () => {
         }
     };
 
+
+
+
+    //     loadGoogleMapsAPI();
+    // }, []);
+
     // useEffect(() => {
     //     // Load the Google Maps JavaScript API
     //     const loadGoogleMapsAPI = () => {
@@ -78,12 +89,12 @@ export const Diner = () => {
         });
     };
 
-    const initMap = () => {
-        const newMap = new window.google.maps.Map(document.getElementById('map'), {
-            center: { lat: 0, lng: 0 },
-            zoom: 10
-        });
-    };
+    // const initMap = () => {
+    //     const newMap = new window.google.maps.Map(document.getElementById('map'), {
+    //         center: { lat: 0, lng: 0 },
+    //         zoom: 10
+    //     });
+    // };
 
     const updateMapWithMarkers = () => {
         const bounds = new window.google.maps.LatLngBounds()
@@ -124,6 +135,8 @@ export const Diner = () => {
     if (loadError) return <div>Error loading maps</div>;
     if (!isLoaded) return <div>Loading...</div>;
 
+
+
     return (
         <div
             style={{
@@ -131,6 +144,7 @@ export const Diner = () => {
                 backgroundSize: "cover",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
+                backgroundAttachment: "fixed"
             }}
         >
             <div>

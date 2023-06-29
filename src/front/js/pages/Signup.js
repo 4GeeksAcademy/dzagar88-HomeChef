@@ -49,7 +49,8 @@ export const Signup = () => {
 			backgroundSize: "cover",
 			backgroundRepeat: "no-repeat",
 			backgroundPosition: "center",
-			height: "783px"
+			height: "783px",
+			backgroundAttachment: "fixed"
 		}} className="d-flex justify-content-center p-5">
 			<div className="position-absolute top-50 start-50 translate-middle">
 				<h2 className="d-flex justify-content-center white-title title-font opacity60 shadow1">Enter a unique username<br></br>and password to sign up:</h2>
