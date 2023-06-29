@@ -50,6 +50,7 @@ class MenuItem(db.Model):
     street = db.Column(db.String(500), nullable=False)
     city = db.Column(db.String(500), nullable=False)
     state = db.Column(db.String(500), nullable=False)
+    price = db.Column(db.Integer(), nullable=False)
 
     def to_dict(self):
         return {
@@ -66,4 +67,5 @@ class MenuItem(db.Model):
             "street": self.street,
             "city": self.city,
             "state": self.state,
+            "price": self.price,
         }

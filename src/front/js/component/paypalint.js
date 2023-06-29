@@ -10,7 +10,7 @@ export default function App() {
                         purchase_units: [
                             {
                                 amount: {
-                                    value: "$30.00",
+                                    value: "30.00",
                                 },
                             },
                         ],

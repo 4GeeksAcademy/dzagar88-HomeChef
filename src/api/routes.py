@@ -54,7 +54,8 @@ def add_menu_item():
         description=body["description"],
         street=body["street"],
         city=body["city"],
-        state=body["state"]
+        state=body["state"],
+        price=body["price"],
     )
     db.session.add(menu_item)
     db.session.commit()

@@ -12,10 +12,10 @@ export const MenuItem = () => {
     const [allergenInput, setAllergenInput] = useState("");
     const [estimatedTimeInput, setEstimatedTimeInput] = useState("");
     const [quantityAvailableInput, setQuantityAvailableInput] = useState("");
-    const [priceInput, setPriceInput] = useState("");
     const [streetInput, setStreetInput] = useState("");
     const [cityInput, setCityInput] = useState("");
     const [stateInput, setStateInput] = useState("");
+    const [priceInput, setPriceInput] = useState("");
 
     const addMenuItem = () => {
         testFunction();
@@ -27,10 +27,10 @@ export const MenuItem = () => {
         setAllergenInput("");
         setEstimatedTimeInput("");
         setQuantityAvailableInput("");
-        setPriceInput("");
         setStreetInput("");
         setCityInput("");
         setStateInput("");
+        setPriceInput("");
     };
 
     const testFunction = () => {
@@ -49,10 +49,10 @@ export const MenuItem = () => {
                 allergen: allergenInput,
                 estimated_time: estimatedTimeInput,
                 quantity_available: quantityAvailableInput,
-                price: priceInput,
                 street: streetInput,
                 city: cityInput,
                 state: stateInput,
+                price: priceInput,
             }),
         })
             .then((response) => {
@@ -137,15 +137,6 @@ export const MenuItem = () => {
                 onChange={(e) => setQuantityAvailableInput(e.target.value)}
                 style={{ width: "85%" }}
             />
-            <input
-                type="text"
-                className="my-1"
-                placeholder="Price*"
-                value={priceInput}
-                onChange={(e) => setPriceInput(e.target.value)}
-                style={{width: "85%" }}
-            />
-
             <br />
             <br />
             <div
@@ -175,6 +166,14 @@ export const MenuItem = () => {
                 value={stateInput}
                 onChange={(e) => setStateInput(e.target.value)}
                 style={{ width: "23%" }}
+            />
+            <input
+                type="text"
+                className="my-1"
+                placeholder="Price*"
+                value={priceInput}
+                onChange={(e) => setPriceInput(e.target.value)}
+                style={{width: "85%" }}
             />
             <br />
             <button
