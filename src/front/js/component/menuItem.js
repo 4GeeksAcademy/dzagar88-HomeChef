@@ -15,6 +15,7 @@ export const MenuItem = () => {
     const [streetInput, setStreetInput] = useState("");
     const [cityInput, setCityInput] = useState("");
     const [stateInput, setStateInput] = useState("");
+    const [priceInput, setPriceInput] = useState("");
 
     const addMenuItem = () => {
         testFunction();
@@ -29,6 +30,7 @@ export const MenuItem = () => {
         setStreetInput("");
         setCityInput("");
         setStateInput("");
+        setPriceInput("");
     };
 
     const testFunction = () => {
@@ -50,6 +52,7 @@ export const MenuItem = () => {
                 street: streetInput,
                 city: cityInput,
                 state: stateInput,
+                price: priceInput,
             }),
         })
             .then((response) => {
@@ -163,6 +166,14 @@ export const MenuItem = () => {
                 value={stateInput}
                 onChange={(e) => setStateInput(e.target.value)}
                 style={{ width: "23%" }}
+            />
+            <input
+                type="text"
+                className="my-1"
+                placeholder="Price*"
+                value={priceInput}
+                onChange={(e) => setPriceInput(e.target.value)}
+                style={{width: "85%" }}
             />
             <br />
             <button

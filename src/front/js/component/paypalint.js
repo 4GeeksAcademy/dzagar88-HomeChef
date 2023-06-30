@@ -1,7 +1,8 @@
 import React from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-export default function App() {
+export default function App(price) {
+    console.log(price.price)
     return (
         <PayPalScriptProvider options={{ clientId: process.env.PAYPAL_CLIENT_ID }}>
             <PayPalButtons
@@ -10,7 +11,7 @@ export default function App() {
                         purchase_units: [
                             {
                                 amount: {
-                                    value: "30.00",
+                                    value: price.price,
                                 },
                             },
                         ],

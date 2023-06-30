@@ -16,7 +16,8 @@ export const DinerMenuItem = ({ menuItem }) => {
                 <p><strong><u>Street:</u></strong> {menuItem.street}</p>
                 <p><strong><u>City:</u></strong> {menuItem.city}</p>
                 <p><strong><u>State:</u></strong> {menuItem.state}</p>
-                <PayPal />
+                <p><strong><u>Price:</u></strong> {menuItem.price}</p>
+                <PayPal price={menuItem.price} />
             </div><br />
         </div>
     );
