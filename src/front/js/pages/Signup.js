@@ -37,6 +37,7 @@ export const Signup = () => {
 			})
 			.then((data) => {
 				console.log(data);
+				alert("You may now sign in with the account you just created!")
 			})
 			.catch((error) => {
 				console.error("There was a problem with the fetch operation:", error);
